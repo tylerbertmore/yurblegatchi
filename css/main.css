@@ -1,23 +1,44 @@
-*, *::after, *::before {
+*{
     box-sizing: border-box;
+    font-family: sans-serif;
   }
   
   body {
     background-color: steelblue;
     display: flex;
-    justify-content: center;
     align-items: center;
     flex-direction: column;
     min-height: 100vh;
     overflow: hidden;
+    border-left: 2px solid white;
+    border-right: 2px solid white;
+    margin: 0 10%;
+    
   }
-  
+  /* HEADER */
+  header{
+      display: flex;
+      margin-top: 5%;
+      justify-content: space-between;
+  }
+
+  header h1{
+      width: 70%;
+      padding-right: 20px;
+  }
+  header.clock{
+      width: 30%;
+  }
+
+
+
+  /* TIMER */
   .clock {
-    width: 300px;
-    height: 300px;
+    width: 100px;
+    height: 100px;
     background-color: rgba(255, 255, 255, .8);
     border-radius: 50%;
-    border: 2px solid black;
+    border: 1px solid black;
     position: relative;
   }
   
@@ -28,7 +49,7 @@
     height: 100%;
     text-align: center;
     transform: rotate(var(--rotation));
-    font-size: 1.5rem;
+    font-size: .75rem;
   }
   
   .clock .number1 { --rotation: 30deg; }
@@ -54,11 +75,11 @@
     transform-origin: bottom;
     z-index: 10;
     transform: translateX(-50%) rotate(calc(var(--rotation) * 1deg));
-    width: 7px;
-    height: 40%;
+    width: 5px;
+    height: 35%;
     background-color: black;
   }
-  
+  /* CENTER BLACK DOT */
   .clock::after {
     content: '';
     position: absolute;
@@ -72,8 +93,18 @@
     border-radius: 50%;
   }
   
-  
-  
+  /* MAIN CONTENT */
+  main{
+    min-width: 700px;
+  }
+
+  .pet-image-container{
+      
+      flex-direction: row;
+      border: 2px solid white;
+      height: 200px;
+      width: 100px;
+  }
   
   
   

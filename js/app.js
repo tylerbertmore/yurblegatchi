@@ -13,5 +13,5 @@ function startClock() {
 function setRotation(element, rotationRatio) {
   element.style.setProperty('--rotation', rotationRatio * -360)
 }
-setInterval(startClock, 1000)
-startClock()
+// setInterval(startClock, 1000)
+// startClock()

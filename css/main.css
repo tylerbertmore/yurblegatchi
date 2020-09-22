@@ -35,11 +35,12 @@
   .clock {
     width: 100px;
     height: 100px;
-    background-color: rgba(255, 255, 255, .8);
+    background-color: #eee;
     border-radius: 50%;
     border: 1px solid black;
     position: relative;
     margin-right: 125px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
   }
   
   .clock .number {
@@ -104,6 +105,7 @@
       display: flex;
   }
 
+
 .pet, .status {
     width: 50%;
     margin-top: 2%;
@@ -114,9 +116,24 @@
     position: relative;
     text-align: center;
     border: 2px solid white;
+    
 }
 .pet-name-container{
     border-bottom: 2px solid white;
+}
+.pet-image img{
+    justify-content: center;
+    margin-top: 15%;
+    
+}
+.pet-footer{
+    position: absolute;
+    bottom: 0;
+    height: 15px;
+    width: 100%;
+    margin: 10px 0 0;
+    font-size: 10px;
+    
 }
 .status{
     margin-bottom: 10%;
@@ -129,19 +146,58 @@
     height: 40px;
     width: 300px;
     border-radius: 0%;
+    border: 2px solid black;
 
+}
+.status progress[value]::-webkit-progress-value {
+    background-color: green;
+      border-radius: 2px; 
+      background-size: 35px 20px, 100% 100%, 100% 100%;
+    border-right: 2px solid black;
+  }
+
+
+
+      
+.status progress[value]::-webkit-progress-bar {
+    background-color: red;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+  }
+.age-container{
+    display: flex;
+}
+#baby, #adult, #final{
+    width: 40px;
+    height: 40px;
+    background-color: #eee;
+    border: 2px solid black;
+    margin-right: 4px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+}
+#baby{
+    background-color: green;
 }
 /* ACTION & CHEAT CONTAINER */
 .action-container, .cheat-container{
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     width: 100%;
     height: 150px;
     border: 2px solid white;
 }
-
+.action-container button, .cheat-container button {
+    margin: 10px;
+}
+.cheat-menu-btn{
+    width: 2px;
+    height: 2px;
+    background-color: black;
+}
+.hidden-menu{
+    display: none;
+}
 
 
   

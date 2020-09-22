@@ -31,11 +31,15 @@
     <div class="status">
         <div class="age-bar">
             <h3>AGE</h3>
-            <progress id="age" value="2" max="3"> 32% </progress>
+            <div class="age-container">
+                <div id="baby"></div>
+                <div id="adult"></div>
+                <div id="final"></div>
+            </div>
         </div>
         <div class="hunger-bar">
             <h3>HUNGER</h3>
-            <progress id="hunger" value="6" max="10"> 32% </progress>
+            <progress id="hunger" value="2" max="10"> 32% </progress>
         </div>
         <div class="sleepiness-bar">
             <h3>SLEEPINESS</h3>
@@ -43,15 +47,17 @@
         </div>
         <div class="boredom-bar">
             <h3>BOREDOM</h3>
-            <progress id="boredom" value="4" max="10"> 32% </progress>
+            <progress id="boredom" value="9" max="10"> 32% </progress>
         </div>
     </div>
     <div class="pet">
         <div class="pet-name-container">
             <h2 id="pet-name">Petname</h2>
         </div>
-        <img src="" alt="">
-        <div class="pet-footer"></div>
+        <div class="pet-image">
+            <img src="./imgs/baby/yurble_baby.gif" alt="">
+        </div>
+        <div class="pet-footer">Art courtesy of Neopets.com</div>
     </div>
 </section>
 <section class="action-container">
@@ -67,7 +73,7 @@
 
 </section>
 <!-- Black dot cheat menu -->
-<img src="" alt="">
+<div class="cheat-menu-btn"></div>
 <section class="cheat-container">
     <div>
         <button id="time-forward">Move time forward</button>

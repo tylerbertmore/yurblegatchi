@@ -98,14 +98,40 @@
     min-width: 700px;
   }
 
-  .pet-image-container{
-      
-      flex-direction: row;
-      border: 2px solid white;
-      height: 200px;
-      width: 100px;
+
+  /* PET INFO */
+  #pet-info{
+      display: flex;
   }
-  
+
+.pet, .status {
+    width: 50%;
+    margin-top: 2%;
+    margin-bottom: 5%;
+}
+
+.pet {
+    position: relative;
+    text-align: center;
+    border: 2px solid white;
+}
+.pet-name-container{
+    border-bottom: 2px solid white;
+}
+.status{
+    margin-bottom: 10%;
+}
+.status h3{
+    margin-bottom: 0;
+}
+
+.status progress{
+    height: 40px;
+    width: 300px;
+    border-radius: 0%;
+
+}
+ 
   
   
   

@@ -162,7 +162,7 @@
     font-size: 10px;
     
 }
-
+/* STATUS BARS  */
 .status h3{
     margin-bottom: 0;
 }
@@ -192,7 +192,10 @@
   } */
 .age-container{
     display: flex;
+    
 }
+
+
 #baby, #adult, #final{
     width: 40px;
     height: 40px;
@@ -201,6 +204,7 @@
     margin-right: 4px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
 }
+
 #baby{
     background-color: green;
 }
@@ -246,6 +250,10 @@
     height: 40px;
     width: 150px;
 }
+
+.test2 progress[value]::-webkit-progress-bar {
+    background-color: red;
+  } 
 
 /* ACTION & CHEAT CONTAINER */
 .action-container, .cheat-container{

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/main.css">
     <script defer src="./js/app.js"></script>
+    <script src="https://kit.fontawesome.com/d6e8b20b2b.js" crossorigin="anonymous"></script>
     <title>SEI Tomagatchi</title>
 </head>
 <body>
@@ -14,17 +15,17 @@
         <div class="clock hidden">
             <div class="hand minute"></div>
             <div class="number number1">I</div>
-            <div class="number number2">🚹</div>
+            <div class="number number2"><i class="fas fa-user-tie"></i></div>
             <div class="number number3">I</div>
             <div class="number number4">I</div>
             <div class="number number5">I</div>
             <div class="number number6">I</div>
             <div class="number number7">I</div>
-            <div class="number number8">♿️</div>
+            <div class="number number8"><i class="fab fa-mandalorian"></i></div>
             <div class="number number9">I</div>
             <div class="number number10">I</div>
-            <div class="number number11">💀</div>
-            <div class="number number12">🐣</div>
+            <div class="number number11"><i class="fas fa-skull-crossbones"></i></div>
+            <div class="number number12"><i class="fas fa-baby"></i></div>
         </div>
 </header>
 <section class="time-info hidden">
@@ -49,9 +50,9 @@
         <div class="age-bar">
             <h3>AGE</h3>
             <div class="age-container">
-                <div id="baby"></div>
-                <div id="adult"></div>
-                <div id="final"></div>
+                <div id="baby"><i class="fas fa-baby"></i></div>
+                <div id="adult"><i class="fas fa-user-tie"></i></div>
+                <div id="final"><i class="fab fa-mandalorian"></i></div>
             </div>
         </div>
         <div class="hunger-bar">
@@ -91,7 +92,7 @@
         <div class="pet-footer">Art courtesy of Neopets.com</div>
     </div>
 </section>
-<section class="action-container">
+<section class="action-container hidden">
     <div>
         <button class="ac-btn" id="feed">FEED</button>
         <button class="ac-btn" id="nap">NAP</button>
@@ -105,7 +106,7 @@
 </section>
 <!-- Black dot cheat menu -->
 <div class="cheat-menu-btn"></div>
-<section class="cheat-container">
+<section class="cheat-container hidden">
     <div>
         <button id="time-forward1">Move time forward 1 min</button>
         <button id="time-forward5">Move time forward 5 mins</button>

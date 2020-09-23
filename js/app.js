@@ -26,6 +26,7 @@ const createPetAnim = document.querySelector('.create-pet');
 
 
 // ACTION BUTTON SELECTORS
+const actionMenu = document.querySelector('.action-container')
 const feedBtn = document.querySelector('#feed');
 const napBtn = document.querySelector('#nap');
 const playBtn = document.querySelector('#play');
@@ -53,6 +54,7 @@ createPetBtn.addEventListener('click', function(){
   createPetAnim.classList.add('slideDown');
   clock.classList.remove('hidden');
   timeInfo.classList.remove('hidden');
+  actionMenu.classList.remove('hidden');
   setInterval(startClock, 1000);
   startClock();
 });
@@ -60,13 +62,11 @@ createPetBtn.addEventListener('click', function(){
 yesRadio.addEventListener('click', function(){
   yesRadio.value = true;
   noRadio.value = false;
-  //
 });
 noRadio.addEventListener('click', function(){
   noRadio.value = true;
   yesRadio.value = false;
-  //
-  // failureModal();
+
 });
 
 

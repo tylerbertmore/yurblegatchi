@@ -105,6 +105,27 @@ noRadio.addEventListener('click', function(){
 });
 
 // ACTION BUTTON EVENT LISTENERS
+abuseBtn.addEventListener('click', function(){
+  decreaseHappinessBar();
+  decreaseHungerBar();
+  decreaseSleepinessBar();
+});
+feedBtn.addEventListener('click', function(){
+  raiseHungerBar();
+});
+napBtn.addEventListener('click', function(){
+  raiseSleepinessBar();
+  //run second function that disables all action buttons for 10 seconds,
+  //  changes pic to sleeping
+});
+playBtn.addEventListener('click', function(){
+  raiseHappinessBar();
+});
+lightsBtn.addEventListener('click', function(){
+  //DIM BACKGROUND IMAGE
+});
+
+
 
 
 // SECRET CHEAT MENU EVENT LISTENER

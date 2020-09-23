@@ -264,6 +264,22 @@
     width: 100%;
     height: 150px;
     border: 2px solid white;
+    margin-bottom: 10%;
+}
+
+.cheat-container{
+    height: 200px;
+    background: black;
+    color: forestgreen;
+    border: 2px solid forestgreen;
+}
+.cheat-container button{
+    background-color: darkslategrey;
+    color: forestgreen;
+}
+.cheat-container button:hover{
+    background-color: lightgray;
+    
 }
 .action-container button, .cheat-container button {
     margin: 10px;
@@ -278,6 +294,10 @@ button:hover{
     width: 2px;
     height: 2px;
     background-color: black;
+    margin-bottom: 5%;
+}
+.cheat-menu-btn:hover{
+    cursor: pointer;
 }
 .hidden{
     display: none;

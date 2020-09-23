@@ -37,6 +37,7 @@ const allActionBtns = document.querySelectorAll('.ac-btn');
 
 
 // CHEAT BUTTON SELECTS
+const cheatMenuCont = document.querySelector('.cheat-container');
 const timeForward1Btn = document.querySelector('#time-forward1');
 const timeForward5Btn = document.querySelector('#time-forward5');
 const forceAgeBtn = document.querySelector('#force-stage');
@@ -73,7 +74,7 @@ noRadio.addEventListener('click', function(){
 let timer = 3600;
 let timerTwo = 60;
 let timerThree = 00;
-
+let cheatMenu = false;
 
 
 feedBtn.addEventListener('click', raiseHungerBar);
@@ -126,5 +127,10 @@ function setRotation(element, rotationRatio) {
 
 
 secretMenuBtn.addEventListener('click', function(){
-    console.log('found me!');
+    
+    if(cheatMenu === true){
+      cheatMenuCont.classList.toggle('hidden');
+    } else {
+      console.log('This is just a black dot. Nothing to see here!');
+    }
 })      

@@ -11,7 +11,7 @@ const clock = document.querySelector('.clock');
 
 // STATUS BAR SELECTORS
 const hungerStat = document.querySelector('#hunger');
-const sleepStat = document.querySelector('#sleepiness');
+const sleepinessStat = document.querySelector('#sleepiness');
 const happinessStat = document.querySelector('#happiness');
 
 // FORM SELECTORS
@@ -31,6 +31,9 @@ const napBtn = document.querySelector('#nap');
 const playBtn = document.querySelector('#play');
 const lightsBtn = document.querySelector('#lights');
 const abuseBtn = document.querySelector('#abuse');
+    // SELECT ALL ACTION BUTTONS
+const allActionBtns = document.querySelectorAll('.ac-btn');
+
 
 // CHEAT BUTTON SELECTS
 const timeForward1Btn = document.querySelector('#time-forward1');
@@ -40,6 +43,8 @@ const killBtn = document.querySelector('#kill');
 const unlockAbuseBtn = document.querySelector('#unlock-abuse');
 
 
+
+// CREATE A PET BUTTON
 createPetBtn.addEventListener('click', function(){
   console.log(yesRadio.value, noRadio.value, userName.value, petName.value);
   userNameDisplay.innerText = `${userName.value}'s Yurble`;
@@ -68,6 +73,36 @@ noRadio.addEventListener('click', function(){
 let timer = 3600;
 let timerTwo = 60;
 let timerThree = 00;
+
+
+
+feedBtn.addEventListener('click', raiseHungerBar);
+abuseBtn.addEventListener('click', decreaseHungerBar);
+abuseBtn.addEventListener('click', decreaseHappinessBar);
+playBtn.addEventListener('click', raiseHappinessBar);
+playBtn.addEventListener('click', decreaseSleepinessBar);
+napBtn.addEventListener('click', raiseSleepinessBar);
+
+
+function decreaseHungerBar(){
+    hungerStat.value--;
+}
+function raiseHungerBar(){
+    hungerStat.value++;
+}
+function decreaseSleepinessBar(){
+    sleepinessStat.value--;
+}
+function raiseSleepinessBar(){
+    sleepinessStat.value+=3;
+}
+function decreaseHappinessBar(){
+    happinessStat.value--;
+}
+function raiseHappinessBar(){
+    happinessStat.value++;
+}
+
 
 
 function startClock() {

@@ -122,6 +122,8 @@
   /* PET INFO */
   #pet-info{
       display: flex;
+      position: relative;
+      overflow: hidden;
   }
 
 
@@ -135,7 +137,7 @@
 .pet {
     
     text-align: center;
-    border: 2px solid white;
+    /* border: 2px solid white; */
     
 }
 .pet-name-container h2{
@@ -211,8 +213,17 @@
   position: absolute;
   text-align: center;
   z-index: 2;
-  background-color: yellow;
+  background-color: #eee;
   padding: 5px;
+  }
+
+  .create-pet:hover{
+    transform: translateY(120%);
+  transition: transform .7s linear;
+  }
+.basic-info:hover{
+    transform: translateY(-120%);
+  transition: transform .7s linear;
   }
  
 .test2 progress[value]::-webkit-progress-bar {

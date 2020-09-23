@@ -11,7 +11,7 @@
 <main>
     <header>
         <h1>SEI Tomagatchi</h1>
-        <div class="clock">
+        <div class="clock hidden">
             <div class="hand minute"></div>
             <div class="number number1">I</div>
             <div class="number number2">🚹</div>
@@ -27,8 +27,8 @@
             <div class="number number12">🐣</div>
         </div>
 </header>
-<section class="time-info">
-    <p><strong>Life:</strong><span>60:00</span> </p>
+<section class="time-info hidden">
+    <p><strong>Life:</strong><span id="timer2">60</span>:<span id="timer3">00</span> </p>
 </section>
 
 
@@ -70,17 +70,17 @@
     <div class="pet">
         <section class="create-pet">
             <h2>Create a Yurble</h2>
-            Your Name: <input type="text" name="userName" id="userName"> <br>
-            Give your Yurble a name: <input type="text" name="petName" id="petName"> <br>
+            Your Name: <input type="text"id="userName" value=""> <br>
+            Give your Yurble a name: <input type="text" id="petName" value="""> <br>
             
             <div>
-                Will you abuse your Yurble? <br>
-                <input type="radio" id="yes" name="gender" value="yes">
+                <p>Will you abuse your Yurble?</p><br>
+                <input type="radio" id="yes" name="abuse">
                 <label for="yes">Yes</label>
-                <input type="radio" id="no" name="gender" value="no">
+                <input type="radio" id="no" name="abuse">
                 <label for="no">No</label>
             </div>
-            <input type="submit" value="Create your Yurble">
+            <button id="create-pet-button" >Create your Yurble!</button> 
         </section>
         <div class="pet-name-container">
             <h2 id="pet-name">Petname</h2>
@@ -107,11 +107,13 @@
 <div class="cheat-menu-btn"></div>
 <section class="cheat-container">
     <div>
-        <button id="time-forward">Move time forward</button>
+        <button id="time-forward1">Move time forward 1 min</button>
+        <button id="time-forward5">Move time forward 5 mins</button>
         <button id="force-stage">Force next age</button>
-        <button id="kill">KILL YOUR PET</button>
+        
     </div>
 <div>
+    <button id="kill">KILL YOUR PET</button>
     <button id="unlock-abuse">Unlock "ABUSE" action</button>
 </div>
     

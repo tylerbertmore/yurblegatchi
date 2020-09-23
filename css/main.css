@@ -217,14 +217,18 @@
   padding: 5px;
   }
 
-  .create-pet:hover{
+
+
+
+  .slideUp{
     transform: translateY(120%);
   transition: transform .7s linear;
   }
-.basic-info:hover{
+  .slideDown{
     transform: translateY(-120%);
   transition: transform .7s linear;
   }
+
  
 .test2 progress[value]::-webkit-progress-bar {
     background-color: red;
@@ -234,6 +238,16 @@
     width: 150px;
 }
 
+.create-pet p {
+    margin: 0;
+    padding: 0;
+}
+
+.create-pet button {
+    margin-top: 15px;
+    height: 40px;
+    width: 150px;
+}
 
 /* ACTION & CHEAT CONTAINER */
 .action-container, .cheat-container{
@@ -259,7 +273,7 @@ button:hover{
     height: 2px;
     background-color: black;
 }
-.hidden-menu{
+.hidden{
     display: none;
 }
 

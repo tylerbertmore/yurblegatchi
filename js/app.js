@@ -10,9 +10,9 @@ const clock = document.querySelector('.clock');
 
 
 // STATUS BAR SELECTORS
-const hungerStat = document.querySelector('#hunger');
-const sleepinessStat = document.querySelector('#sleepiness');
-const happinessStat = document.querySelector('#happiness');
+let hungerStat = document.querySelector('#hunger');
+let sleepinessStat = document.querySelector('#sleepiness');
+let happinessStat = document.querySelector('#happiness');
 
 // FORM SELECTORS
 const createPetBtn = document.querySelector('#create-pet-button');
@@ -44,9 +44,39 @@ const forceAgeBtn = document.querySelector('#force-stage');
 const killBtn = document.querySelector('#kill');
 const unlockAbuseBtn = document.querySelector('#unlock-abuse');
 
+class Yurble {
+    constructor(name, owner){
+      this.name = name;
+      this.owner = owner;
+      this.age = 1;
+      this.happiness = 10;
+      this.hunger = 10;
+      this.sleepiness = 10;
+    }
+  
+
+}
+
+// GLOBAL VARS
+let timer = 3600;
+let timerTwo = 60;
+let timerThree = 00;
+let cheatMenu = false;
+let yourYurble = null;
 
 
-// CREATE A PET BUTTON
+
+
+
+
+// ACTION BUTTON EVENT LISTENERS
+
+
+
+
+
+
+// CREATE A PET  EVENT LISTENERS
 createPetBtn.addEventListener('click', function(){
   console.log(yesRadio.value, noRadio.value, userName.value, petName.value);
   userNameDisplay.innerText = `${userName.value}'s Yurble`;
@@ -56,8 +86,12 @@ createPetBtn.addEventListener('click', function(){
   clock.classList.remove('hidden');
   timeInfo.classList.remove('hidden');
   actionMenu.classList.remove('hidden');
+  yourYurble = new Yurble(petName.value, userName.value);
   setInterval(startClock, 1000);
   startClock();
+  // stat initializer
+  statInit();
+  console.log(yourYurble);
 });
 
 yesRadio.addEventListener('click', function(){
@@ -70,42 +104,21 @@ noRadio.addEventListener('click', function(){
 
 });
 
-
-let timer = 3600;
-let timerTwo = 60;
-let timerThree = 00;
-let cheatMenu = false;
+// ACTION BUTTON EVENT LISTENERS
 
 
-feedBtn.addEventListener('click', raiseHungerBar);
-abuseBtn.addEventListener('click', decreaseHungerBar);
-abuseBtn.addEventListener('click', decreaseHappinessBar);
-playBtn.addEventListener('click', raiseHappinessBar);
-playBtn.addEventListener('click', decreaseSleepinessBar);
-napBtn.addEventListener('click', raiseSleepinessBar);
-
-
-function decreaseHungerBar(){
-    hungerStat.value--;
-}
-function raiseHungerBar(){
-    hungerStat.value++;
-}
-function decreaseSleepinessBar(){
-    sleepinessStat.value--;
-}
-function raiseSleepinessBar(){
-    sleepinessStat.value+=3;
-}
-function decreaseHappinessBar(){
-    happinessStat.value--;
-}
-function raiseHappinessBar(){
-    happinessStat.value++;
-}
+// SECRET CHEAT MENU EVENT LISTENER
+secretMenuBtn.addEventListener('click', function(){
+  if(cheatMenu === true){
+    cheatMenuCont.classList.toggle('hidden');
+  } else {
+    console.log('This is just a black dot. Nothing to see here!');
+  }
+});    
 
 
 
+// FUNCTIONS
 function startClock() {
   timerThree = timer % 60 ;
   timerTwo = Math.floor(timer / 60);
@@ -126,11 +139,39 @@ function setRotation(element, rotationRatio) {
 }
 
 
-secretMenuBtn.addEventListener('click', function(){
+  function statInit(){
+    hungerStat.value = yourYurble.hunger;
+    sleepinessStat.value = yourYurble.sleepiness;
+    happinessStat.value = yourYurble.happiness;
+  }
+
+ function decreaseHungerBar(){
+    hungerStat.value--;
+    yourYurble.hunger--;
+  }
+ function raiseHungerBar(){
+    hungerStat.value++;
+    yourYurble.hunger++;
     
-    if(cheatMenu === true){
-      cheatMenuCont.classList.toggle('hidden');
-    } else {
-      console.log('This is just a black dot. Nothing to see here!');
-    }
-})      
+  }
+ function decreaseSleepinessBar(){
+    sleepinessStat.value--;
+    yourYurble.sleepiness--;
+    
+  }
+ function raiseSleepinessBar(){
+    sleepinessStat.value+=3;
+    yourYurble.sleepiness+=3;
+    
+  }
+ function decreaseHappinessBar(){
+    happinessStat.value--;
+    yourYurble.happiness--;
+    
+  }
+ function raiseHappinessBar(){
+    happinessStat.value++;
+    yourYurble.happiness++;
+    
+  }
+

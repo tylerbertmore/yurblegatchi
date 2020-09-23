@@ -11,6 +11,7 @@
     min-height: 100vh;
     border-left: 2px solid white;
     border-right: 2px solid white;
+    border-top: 100px solid white;
     margin: 0 10%;
     
   }
@@ -19,11 +20,14 @@
       display: flex;
       margin-top: 5%;
       justify-content: space-between;
+      align-items: center;
   }
 
   header h1{
-      width: 70%;
+      width: 50%;
       padding-right: 20px;
+      margin-top: 0;
+      border-bottom: 10px solid white;
   }
   header.clock{
       width: 30%;
@@ -93,6 +97,19 @@
     transform: translate(-50%, -50%);
     border-radius: 50%;
   }
+
+  .time-info p {
+      margin: 0;
+      padding: 0;
+  }
+
+  .time-info{
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 1%;
+      margin-right: 20%;
+  }
+
   
   /* MAIN CONTENT */
   main{
@@ -118,8 +135,12 @@
     border: 2px solid white;
     
 }
+.pet-name-container h2{
+    padding: 10px;
+    margin: 0;
+}
 .pet-name-container{
-    border-bottom: 2px solid white;
+    background-color: white;
 }
 .pet-image img{
     justify-content: center;
@@ -156,12 +177,13 @@
     border-right: 2px solid black;
   }
 
-
-
       
 .status progress[value]::-webkit-progress-bar {
-    background-color: red;
+    background-color: #eee;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+  }
+.hunger-bar progress[value]::-webkit-progress-bar {
+    background-color: red;
   }
 .age-container{
     display: flex;
@@ -177,6 +199,9 @@
 #baby{
     background-color: green;
 }
+
+
+
 /* ACTION & CHEAT CONTAINER */
 .action-container, .cheat-container{
     display: flex;
@@ -189,6 +214,12 @@
 }
 .action-container button, .cheat-container button {
     margin: 10px;
+    padding: 10px;
+    font-size: 16px;
+}
+button:hover{
+    background-color: green;
+    cursor: pointer;
 }
 .cheat-menu-btn{
     width: 2px;

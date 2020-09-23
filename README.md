@@ -39,9 +39,9 @@ Yurblegatchi is a Tomagatchi clone with art from Neopets.com. You can create a p
 ### Wireframes
 
 - **Create a pet page** 
-![Yurblegatchi Wireframe 1](./imgs/wireframes/sei-tomagatchi-wireframe-1)
+![Yurblegatchi Wireframe 1](https://i.imgur.com/8GE8koS.png)
 
 ---
 
 - **Interact with your pet** 
-![Yurblegatchi Wireframe 2](./imgs/wireframes/sei-tomagatchi-wireframe-2)
+![Yurblegatchi Wireframe 2](https://i.imgur.com/p4G74Pt.png)

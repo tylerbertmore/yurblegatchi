@@ -31,8 +31,22 @@
     <p><strong>Life:</strong><span>60:00</span> </p>
 </section>
 
+
+
 <section id="pet-info">
+    
+   
     <div class="status">
+        <section class="basic-info"><p>Welcome to Yurblegatchi! To start, create a new Yurble to the right using the form. Make sure you <strong>DO NOT</strong> select "yes" when asked if you will abuse your Yurble. Yurbles already have short lives, you shouldn't make them more difficult!</p>
+
+            <p class="test1">After creating your Yurble you will be responsible for its care. You will see three bars like this: <br>
+                <progress id="test1" value="9" max="10"> 90% </progress>
+            </p>
+            <p class="test2">The back of the bar will turn red, when an attribute is low. If it reaches 0, <strong>YOUR YURBLE WILL DIE!</strong><br>
+                <progress id="test2" value="2" max="10"> 32% </progress>
+            </p>
+        
+        </section>
         <div class="age-bar">
             <h3>AGE</h3>
             <div class="age-container">
@@ -55,6 +69,20 @@
         </div>
     </div>
     <div class="pet">
+        <section class="create-pet">
+            <h2>Create a Yurble</h2>
+            Your Name: <input type="text" name="userName" id="userName"> <br>
+            Give your Yurble a name: <input type="text" name="petName" id="petName"> <br>
+            
+            <div>
+                Will you abuse your Yurble? <br>
+                <input type="radio" id="yes" name="gender" value="yes">
+                <label for="yes">Yes</label>
+                <input type="radio" id="no" name="gender" value="no">
+                <label for="no">No</label>
+            </div>
+            <input type="submit" value="Create your Yurble">
+        </section>
         <div class="pet-name-container">
             <h2 id="pet-name">Petname</h2>
         </div>

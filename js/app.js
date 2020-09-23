@@ -18,4 +18,4 @@ startClock()
 
 secretMenuBtn.addEventListener('click', function(){
     console.log('found me!');
-})
+})      

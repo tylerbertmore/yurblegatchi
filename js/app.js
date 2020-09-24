@@ -7,6 +7,7 @@ let timerHour = document.querySelector('#timer2');
 let timerMinute = document.querySelector('#timer3');
 const timeInfo = document.querySelector('.time-info');
 const clock = document.querySelector('.clock');
+const numTwelve = document.querySelector('.number12');
 
 
 // STATUS BAR SELECTORS
@@ -152,6 +153,9 @@ function startClock() {
   }
   timer--;
   timerThree--;
+  if(timer === 3000){
+    numTwelve.innerHTML = "<i class='fas fa-skull-crossbones'></i>";
+  }
   
 }
 
@@ -196,3 +200,4 @@ function setRotation(element, rotationRatio) {
     
   }
 
+console.log(hungerStat.getAttributeNames());

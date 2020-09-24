@@ -1,3 +1,4 @@
+//-------------------------------QUERY SELECTORS
 //GLOBAL SELECTORS
 const secretMenuBtn = document.querySelector('.cheat-menu-btn');
 const userNameDisplay = document.querySelector('h1');
@@ -50,7 +51,7 @@ const allActionBtns = document.querySelectorAll('.ac-btn');
 const cheatMenuCont = document.querySelector('.cheat-container');
 const timeForward1Btn = document.querySelector('#time-forward1');
 const timeForward5Btn = document.querySelector('#time-forward5');
-const forceAgeBtn = document.querySelector('#force-stage');
+const makeHappyBtn = document.querySelector('#force-stage');
 const killBtn = document.querySelector('#kill');
 const unlockAbuseBtn = document.querySelector('#unlock-abuse');
 
@@ -66,7 +67,7 @@ class Yurble {
   
 }
 
-// GLOBAL VARS
+// -------------------------------GLOBAL VARS
 let yurbleAge = 1;
 let timer = 3600;
 let timerTwo = 60;
@@ -76,6 +77,9 @@ let yourYurble = null;
 let currentBase = "url('/imgs/baby/yurble_baby";
 let emotion = "";
 let currentImagePath = currentBase + emotion + ".png')";
+
+
+//-------------------------------EVENT LISTENERS
 
 // ABUSE PET RADIO BUTTONS
 yesRadio.addEventListener('click', function(){
@@ -114,10 +118,14 @@ abuseBtn.addEventListener('click', function(){
   allActionBtns[4].setAttribute('disabled', 'false')
   setTimeout(abuseAnimationTwo, 3000);
 });
+
+
 feedBtn.addEventListener('click', function(){
   raiseHungerBar();
   decreaseSleepinessBar();
 });
+
+
 napBtn.addEventListener('click', function(){
   raiseSleepinessBar();
   disableButtons();
@@ -125,10 +133,14 @@ napBtn.addEventListener('click', function(){
   emotion = "_sleep";
   currentImgFunc();
 });
+
+
 playBtn.addEventListener('click', function(){
   raiseHappinessBar();
   decreaseSleepinessBar();
 });
+
+
 lightsBtn.addEventListener('click', function(){
   lightDiv.classList.toggle('actual-pet-overlay');
 });
@@ -145,14 +157,19 @@ secretMenuBtn.addEventListener('click', function(){
   }
 });    
 
+timeForward1Btn.addEventListener('click', cheatForwardOne);
+timeForward5Btn.addEventListener('click', cheatForwardFive);
+makeHappyBtn.addEventListener('click', makeAllHappy);
+killBtn.addEventListener('click', killYourYurble);
+unlockAbuseBtn.addEventListener('click', unlockAbuse);
+
 
 
 // ---------------------------------------------- FUNCTIONS
 // CLOCK
 function startTimer() {
   timerCalc();
-  timer--;
-  timerThree--;
+
   yurbleAgeCheck();
   yurbleAgeArtCheck();
   yurbleEmotionCheck();
@@ -193,7 +210,7 @@ function statDecreasers(){
 
 // ACTION BUTTON FUNCTIONS
  function disableButtons() {
-   for(let i = 0; i < allActionBtns.length; i++){
+   for(let i = 0; i < allActionBtns.length - 1; i++){
     allActionBtns[i].setAttribute('disabled', 'false');
    }
    emotion = "_sad";
@@ -202,7 +219,7 @@ function statDecreasers(){
  }
 
  function enableButtons(){
-  for(let i = 0; i < allActionBtns.length; i++){
+  for(let i = 0; i < allActionBtns.length - 1; i++){
     allActionBtns[i].removeAttribute('disabled');
    }
    lightDiv.classList.toggle('actual-pet-overlay');
@@ -239,6 +256,34 @@ function statDecreasers(){
     yourYurble.happiness++;
     
   }
+
+  //CHEAT MENU FUNCNTIONS
+function cheatForwardOne(){
+  timer-=60;
+}
+
+function cheatForwardFive(){
+  timer-=300;
+}
+
+function makeAllHappy(){
+  sleepinessStat.value+=5;
+  yourYurble.sleepiness+=5;
+  hungerStat.value+=5;
+  yourYurble.hunger+=5;
+  happinessStat.value+=5;
+  yourYurble.happiness+=5;
+}
+
+function killYourYurble(){
+  yurbleAge = 4;
+  // game over funciton?
+}
+
+function unlockAbuse(){
+  allActionBtns[4].removeAttribute('disabled');
+}
+
 
   function abuseAnimationTwo(){
     emotion = "_injured2";
@@ -314,7 +359,8 @@ function timerCalc(){
   if(timerThree <= 9){
     timerMinute.textContent = `0${timerThree}`;
   }
-
+  timer--;
+  timerThree--;
 }
 
   function currentImgFunc(){

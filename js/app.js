@@ -60,17 +60,18 @@ class Yurble {
       this.sleepiness = 10;
     }
   
-
 }
 
 // GLOBAL VARS
+let yurbleAge = 1;
 let timer = 3600;
 let timerTwo = 60;
 let timerThree = 00;
 let cheatMenu = false;
 let yourYurble = null;
-
-
+let currentBase = "url('/imgs/baby/yurble_baby";
+let emotion = "";
+let currentImagePath = currentBase + emotion + ".png')";
 
 // ABUSE PET RADIO BUTTONS
 yesRadio.addEventListener('click', function(){
@@ -94,11 +95,13 @@ createPetBtn.addEventListener('click', function(){
   timeInfo.classList.remove('hidden');
   actionMenu.classList.remove('hidden');
   yourYurble = new Yurble(petName.value, userName.value);
-  // setInterval(startTimer, 1000);
+  setInterval(startTimer, 1000);
   // stat initializer
   statInit();
-  setInterval(statDecreasers, 5000);
+  console.log(currentImagePath);
+  // setInterval(statDecreasers, 5000);
   console.log(yourYurble);
+  console.log(yurbleAge);
 });
 
 
@@ -125,7 +128,6 @@ playBtn.addEventListener('click', function(){
 });
 lightsBtn.addEventListener('click', function(){
   lightDiv.classList.toggle('actual-pet-overlay');
-  console.log(lightDiv.classList);
 });
 
 
@@ -158,7 +160,10 @@ function startTimer() {
   timerThree--;
   if(timer === 3000){
     numTwelve.innerHTML = "<i class='fas fa-skull-crossbones'></i>";
+    yurbleAge++;
+    console.log(yurbleAge);
   }
+  
   
 }
 // CLOCK HAND ROTATION
@@ -190,6 +195,7 @@ function statDecreasers(){
     hungerStat.value = yourYurble.hunger;
     sleepinessStat.value = yourYurble.sleepiness;
     happinessStat.value = yourYurble.happiness;
+    yurbleAge = yourYurble.age;
   }
 
 
@@ -198,6 +204,7 @@ function statDecreasers(){
    for(let i = 0; i < allActionBtns.length; i++){
     allActionBtns[i].setAttribute('disabled', 'false');
    }
+   emotion = "_sad";
    setTimeout(enableButtons, 5000);
    
  }
@@ -207,7 +214,8 @@ function statDecreasers(){
     allActionBtns[i].removeAttribute('disabled');
    }
    lightDiv.classList.toggle('actual-pet-overlay');
-   petPic.style.background = "url('/imgs/baby/yurble_baby.png')";
+   emotion = "";
+   currentImgFunc();
  }
 
  function decreaseHungerBar(){
@@ -238,4 +246,26 @@ function statDecreasers(){
     happinessStat.value++;
     yourYurble.happiness++;
     
+  }
+
+  function currentArt(){
+    if(yurbleAge === 1){
+      //baby art
+      currentBase = "url('/imgs/baby/yurble_baby";
+    } else if (yurbleAge === 2){
+      //adult art
+      currentBase = "url('/imgs/base/yurble_blue";
+    } else if (yurbleAge ===3){
+      //extreme art
+      currentBase = "url('/imgs/evolution/yurble_halloween";
+    } else if(yurbleAge ===4){
+      //tombstone art
+      currentBase = "url('/imgs/death/tombstone";
+      //game over
+    }
+  }
+
+  function currentImgFunc(){
+    currentImagePath = currentBase + emotion + ".png')"
+    petPic.style.background = currentImagePath;
   }

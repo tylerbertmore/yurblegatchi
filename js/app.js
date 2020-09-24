@@ -91,13 +91,7 @@ noRadio.addEventListener('click', function(){
 // CREATE A PET  EVENT LISTENERS
 createPetBtn.addEventListener('click', function(){
   console.log(yesRadio.value, noRadio.value, userName.value, petName.value);
-  userNameDisplay.innerText = `${userName.value}'s Yurble`;
-  petNameDisplay.innerText = petName.value;
-  basicAnim.classList.add('slideUp');
-  createPetAnim.classList.add('slideDown');
-  clock.classList.remove('hidden');
-  timeInfo.classList.remove('hidden');
-  actionMenu.classList.remove('hidden');
+  cssInit();
   yourYurble = new Yurble(petName.value, userName.value);
   setInterval(startTimer, 1000);
   // stat initializer
@@ -156,30 +150,11 @@ secretMenuBtn.addEventListener('click', function(){
 // ---------------------------------------------- FUNCTIONS
 // CLOCK
 function startTimer() {
-  timerThree = timer % 60 ;
-  timerTwo = Math.floor(timer / 60);
-  const minutesRatio = timer / 3600;
-  setRotation(hand, minutesRatio);
-  timerHour.textContent = timerTwo;
-  timerMinute.textContent = timerThree;
-  if(timerThree <= 9){
-    timerMinute.textContent = `0${timerThree}`;
-  }
+  timerCalc();
   timer--;
   timerThree--;
-  if(timer === 3000){
-    numTwelve.innerHTML = "<i class='fas fa-skull-crossbones'></i>";
-    yurbleAge++;
-    ageBaby.style.backgroundColor = "#eee";
-    ageAdult.style.backgroundColor = "forestgreen";
-    console.log(yurbleAge);
-  } else if(timer === 1200){
-    yurbleAge++;
-    ageAdult.style.backgroundColor = "#eee";
-    ageFinal.style.backgroundColor = "forestgreen";
-    console.log(yurbleAge);
-  }
   yurbleAgeCheck();
+  yurbleAgeArtCheck();
   yurbleEmotionCheck();
   
 }
@@ -271,8 +246,22 @@ function statDecreasers(){
     allActionBtns[4].removeAttribute('disabled');
   }
 
+  function yurbleAgeCheck(){
+    if(timer === 2999){
+      numTwelve.innerHTML = "<i class='fas fa-skull-crossbones'></i>";
+      yurbleAge++;
+      ageBaby.style.backgroundColor = "#eee";
+      ageAdult.style.backgroundColor = "forestgreen";
+      console.log(yurbleAge);
+    } else if(timer === 1199){
+      yurbleAge++;
+      ageAdult.style.backgroundColor = "#eee";
+      ageFinal.style.backgroundColor = "forestgreen";
+      console.log(yurbleAge);
+    }
+  }
 
-  function yurbleAgeCheck() {
+  function yurbleAgeArtCheck() {
     if(yurbleAge === 1){
       //baby art
       currentBase = "url('/imgs/baby/yurble_baby";
@@ -305,6 +294,28 @@ function statDecreasers(){
     }
   }
 
+function cssInit(){
+  userNameDisplay.innerText = `${userName.value}'s Yurble`;
+  petNameDisplay.innerText = petName.value;
+  basicAnim.classList.add('slideUp');
+  createPetAnim.classList.add('slideDown');
+  clock.classList.remove('hidden');
+  timeInfo.classList.remove('hidden');
+  actionMenu.classList.remove('hidden');
+}
+
+function timerCalc(){
+  timerThree = timer % 60 ;
+  timerTwo = Math.floor(timer / 60);
+  const minutesRatio = timer / 3600;
+  setRotation(hand, minutesRatio);
+  timerHour.textContent = timerTwo;
+  timerMinute.textContent = timerThree;
+  if(timerThree <= 9){
+    timerMinute.textContent = `0${timerThree}`;
+  }
+
+}
 
   function currentImgFunc(){
     currentImagePath = currentBase + emotion + ".png')"

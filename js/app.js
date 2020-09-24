@@ -1,14 +1,16 @@
 //GLOBAL SELECTORS
-const hand = document.querySelector('.minute')
 const secretMenuBtn = document.querySelector('.cheat-menu-btn');
 const userNameDisplay = document.querySelector('h1');
 const petNameDisplay = document.querySelector('#pet-name');
+const lightDiv = document.querySelector('#lights-out');
+
+// CLOCK
 let timerHour = document.querySelector('#timer2');
 let timerMinute = document.querySelector('#timer3');
 const timeInfo = document.querySelector('.time-info');
 const clock = document.querySelector('.clock');
 const numTwelve = document.querySelector('.number12');
-const lightDiv = document.querySelector('#lights-out');
+const hand = document.querySelector('.minute');
 
 
 // STATUS BAR SELECTORS
@@ -22,9 +24,11 @@ const yesRadio = document.querySelector('#yes');
 const noRadio = document.querySelector('#no');
 const userName = document.querySelector('#userName');
 const petName = document.querySelector('#petName');
-
 const basicAnim = document.querySelector('.basic-info');
 const createPetAnim = document.querySelector('.create-pet');
+
+// PET SELECTORS
+const petPic = document.querySelector('.actual-pet-image');
 
 
 // ACTION BUTTON SELECTORS
@@ -90,10 +94,10 @@ createPetBtn.addEventListener('click', function(){
   timeInfo.classList.remove('hidden');
   actionMenu.classList.remove('hidden');
   yourYurble = new Yurble(petName.value, userName.value);
-  setInterval(startTimer, 1000);
+  // setInterval(startTimer, 1000);
   // stat initializer
   statInit();
-  // setInterval(statDecreasers, 5000);
+  setInterval(statDecreasers, 5000);
   console.log(yourYurble);
 });
 
@@ -112,6 +116,8 @@ feedBtn.addEventListener('click', function(){
 napBtn.addEventListener('click', function(){
   raiseSleepinessBar();
   disableButtons();
+  lightDiv.classList.toggle('actual-pet-overlay');
+  petPic.style.background = "url('/imgs/baby/yurble_baby_sleep.png')";
 });
 playBtn.addEventListener('click', function(){
   raiseHappinessBar();
@@ -119,6 +125,7 @@ playBtn.addEventListener('click', function(){
 });
 lightsBtn.addEventListener('click', function(){
   lightDiv.classList.toggle('actual-pet-overlay');
+  console.log(lightDiv.classList);
 });
 
 
@@ -166,14 +173,17 @@ function statDecreasers(){
   const randNumThree = Math.floor(Math.random() * 3);
   happinessStat.value -= randNumOne;
   yourYurble.happiness -= randNumOne;
-  sleepinessStat.value -= randNumTwo;
-  yourYurble.sleepiness -= randNumTwo;
+  if(lightDiv.classList.value === "actual-pet-overlay"){
+    sleepinessStat.value -= 0;
+    yourYurble.sleepiness -= 0;
+  } else {
+    sleepinessStat.value -= randNumTwo;
+    yourYurble.sleepiness -= randNumTwo;
+  }
   hungerStat.value -= randNumThree;
   yourYurble.hunger -= randNumThree;
   console.log(yourYurble);
 }
-
-
 
 
   function statInit(){
@@ -196,8 +206,8 @@ function statDecreasers(){
   for(let i = 0; i < allActionBtns.length; i++){
     allActionBtns[i].removeAttribute('disabled');
    }
-   sleepinessStat.value+=3;
-   yourYurble.sleepiness+=3;
+   lightDiv.classList.toggle('actual-pet-overlay');
+   petPic.style.background = "url('/imgs/baby/yurble_baby.png')";
  }
 
  function decreaseHungerBar(){

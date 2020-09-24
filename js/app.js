@@ -76,6 +76,16 @@ let yourYurble = null;
 
 
 
+// ABUSE PET RADIO BUTTONS
+yesRadio.addEventListener('click', function(){
+  yesRadio.value = true;
+  noRadio.value = false;
+});
+noRadio.addEventListener('click', function(){
+  noRadio.value = true;
+  yesRadio.value = false;
+
+});
 
 // CREATE A PET  EVENT LISTENERS
 createPetBtn.addEventListener('click', function(){
@@ -92,18 +102,11 @@ createPetBtn.addEventListener('click', function(){
   startClock();
   // stat initializer
   statInit();
+  setInterval(statDecreasers, 5000);
   console.log(yourYurble);
 });
 
-yesRadio.addEventListener('click', function(){
-  yesRadio.value = true;
-  noRadio.value = false;
-});
-noRadio.addEventListener('click', function(){
-  noRadio.value = true;
-  yesRadio.value = false;
 
-});
 
 // ACTION BUTTON EVENT LISTENERS
 abuseBtn.addEventListener('click', function(){
@@ -159,8 +162,21 @@ function startClock() {
   
 }
 
+function statDecreasers(){
+  const randNumOne = Math.floor(Math.random() * 3);
+  const randNumTwo = Math.floor(Math.random() * 3);
+  const randNumThree = Math.floor(Math.random() * 3);
+  happinessStat.value -= randNumOne;
+  yourYurble.happiness -= randNumOne;
+  sleepinessStat.value -= randNumTwo;
+  yourYurble.sleepiness -= randNumTwo;
+  hungerStat.value -= randNumThree;
+  yourYurble.hunger -= randNumThree;
+  console.log(yourYurble);
+}
+
 function setRotation(element, rotationRatio) {
-  element.style.setProperty('--rotation', rotationRatio * -360)
+  element.style.setProperty('--rotation', rotationRatio * -360);
 }
 
 

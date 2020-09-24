@@ -8,6 +8,7 @@ let timerMinute = document.querySelector('#timer3');
 const timeInfo = document.querySelector('.time-info');
 const clock = document.querySelector('.clock');
 const numTwelve = document.querySelector('.number12');
+const lightDiv = document.querySelector('#lights-out');
 
 
 // STATUS BAR SELECTORS
@@ -67,15 +68,6 @@ let yourYurble = null;
 
 
 
-
-
-
-// ACTION BUTTON EVENT LISTENERS
-
-
-
-
-
 // ABUSE PET RADIO BUTTONS
 yesRadio.addEventListener('click', function(){
   yesRadio.value = true;
@@ -98,11 +90,10 @@ createPetBtn.addEventListener('click', function(){
   timeInfo.classList.remove('hidden');
   actionMenu.classList.remove('hidden');
   yourYurble = new Yurble(petName.value, userName.value);
-  setInterval(startClock, 1000);
-  startClock();
+  setInterval(startTimer, 1000);
   // stat initializer
   statInit();
-  setInterval(statDecreasers, 5000);
+  // setInterval(statDecreasers, 5000);
   console.log(yourYurble);
 });
 
@@ -116,17 +107,18 @@ abuseBtn.addEventListener('click', function(){
 });
 feedBtn.addEventListener('click', function(){
   raiseHungerBar();
+  decreaseSleepinessBar();
 });
 napBtn.addEventListener('click', function(){
   raiseSleepinessBar();
-  //run second function that disables all action buttons for 10 seconds,
-  //  changes pic to sleeping
+  disableButtons();
 });
 playBtn.addEventListener('click', function(){
   raiseHappinessBar();
+  decreaseSleepinessBar();
 });
 lightsBtn.addEventListener('click', function(){
-  //DIM BACKGROUND IMAGE
+  lightDiv.classList.toggle('actual-pet-overlay');
 });
 
 
@@ -143,8 +135,9 @@ secretMenuBtn.addEventListener('click', function(){
 
 
 
-// FUNCTIONS
-function startClock() {
+// ---------------------------------------------- FUNCTIONS
+// CLOCK
+function startTimer() {
   timerThree = timer % 60 ;
   timerTwo = Math.floor(timer / 60);
   const minutesRatio = timer / 3600;
@@ -161,7 +154,12 @@ function startClock() {
   }
   
 }
+// CLOCK HAND ROTATION
+function setRotation(element, rotationRatio) {
+  element.style.setProperty('--rotation', rotationRatio * -360);
+}
 
+// CORE GAMEPLAY DECREASER
 function statDecreasers(){
   const randNumOne = Math.floor(Math.random() * 3);
   const randNumTwo = Math.floor(Math.random() * 3);
@@ -175,9 +173,7 @@ function statDecreasers(){
   console.log(yourYurble);
 }
 
-function setRotation(element, rotationRatio) {
-  element.style.setProperty('--rotation', rotationRatio * -360);
-}
+
 
 
   function statInit(){
@@ -185,6 +181,24 @@ function setRotation(element, rotationRatio) {
     sleepinessStat.value = yourYurble.sleepiness;
     happinessStat.value = yourYurble.happiness;
   }
+
+
+// ACTION BUTTON FUNCTIONS
+ function disableButtons() {
+   for(let i = 0; i < allActionBtns.length; i++){
+    allActionBtns[i].setAttribute('disabled', 'false');
+   }
+   setTimeout(enableButtons, 5000);
+   
+ }
+
+ function enableButtons(){
+  for(let i = 0; i < allActionBtns.length; i++){
+    allActionBtns[i].removeAttribute('disabled');
+   }
+   sleepinessStat.value+=3;
+   yourYurble.sleepiness+=3;
+ }
 
  function decreaseHungerBar(){
     hungerStat.value--;
@@ -215,5 +229,3 @@ function setRotation(element, rotationRatio) {
     yourYurble.happiness++;
     
   }
-
-console.log(hungerStat.getAttributeNames());

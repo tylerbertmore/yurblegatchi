@@ -133,24 +133,47 @@
 }
 
 .pet {
-    
+    position: relative;
     text-align: center;
     /* border: 2px solid white; */
-    background-image: url('/imgs/backgrounds/berryforest.png');
+    background-image:   url('/imgs/backgrounds/berryforest.png');
     background-size: cover;
     
 }
 .pet-name-container h2{
     padding: 10px;
     margin: 0;
+
 }
 .pet-name-container{
     background-color: white;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 1;
 }
-.pet-image img{
+
+
+.pet-image{
+    display: flex;
     justify-content: center;
-    margin-top: 15%;
+    align-items: center;
+    flex-direction: column;
     
+}
+
+.actual-pet-image{
+  height: 150px;
+    width: 150px;
+    background: url('/imgs/baby/yurble_baby.png');
+    margin-top: 35%;
+}
+.actual-pet-overlay{
+  position: absolute;
+  margin-top: 14%;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
 }
 .pet-footer{
     position: absolute;

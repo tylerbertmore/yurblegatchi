@@ -13,7 +13,11 @@ const numTwelve = document.querySelector('.number12');
 const hand = document.querySelector('.minute');
 
 
-// STATUS BAR SELECTORS
+// STATUS SELECTORS
+const ageBaby = document.querySelector('#baby');
+const ageAdult = document.querySelector('#adult');
+const ageFinal = document.querySelector('#final');
+const ageDeath = document.querySelector('#death');
 let hungerStat = document.querySelector('#hunger');
 let sleepinessStat = document.querySelector('#sleepiness');
 let happinessStat = document.querySelector('#happiness');
@@ -111,6 +115,10 @@ abuseBtn.addEventListener('click', function(){
   decreaseHappinessBar();
   decreaseHungerBar();
   decreaseSleepinessBar();
+  emotion = "_injured1";
+  currentImgFunc();
+  allActionBtns[4].setAttribute('disabled', 'false')
+  setTimeout(abuseAnimationTwo, 3000);
 });
 feedBtn.addEventListener('click', function(){
   raiseHungerBar();
@@ -120,7 +128,8 @@ napBtn.addEventListener('click', function(){
   raiseSleepinessBar();
   disableButtons();
   lightDiv.classList.toggle('actual-pet-overlay');
-  petPic.style.background = "url('/imgs/baby/yurble_baby_sleep.png')";
+  emotion = "_sleep";
+  currentImgFunc();
 });
 playBtn.addEventListener('click', function(){
   raiseHappinessBar();
@@ -161,9 +170,17 @@ function startTimer() {
   if(timer === 3000){
     numTwelve.innerHTML = "<i class='fas fa-skull-crossbones'></i>";
     yurbleAge++;
+    ageBaby.style.backgroundColor = "#eee";
+    ageAdult.style.backgroundColor = "forestgreen";
+    console.log(yurbleAge);
+  } else if(timer === 1200){
+    yurbleAge++;
+    ageAdult.style.backgroundColor = "#eee";
+    ageFinal.style.backgroundColor = "forestgreen";
     console.log(yurbleAge);
   }
-  
+  yurbleAgeCheck();
+  yurbleEmotionCheck();
   
 }
 // CLOCK HAND ROTATION
@@ -242,28 +259,52 @@ function statDecreasers(){
     yourYurble.happiness--;
     
   }
- function raiseHappinessBar(){
+ function raiseHappinessBar(){ 
     happinessStat.value++;
     yourYurble.happiness++;
     
   }
 
-  function currentArt(){
+  function abuseAnimationTwo(){
+    emotion = "_injured2";
+    currentImgFunc();
+    allActionBtns[4].removeAttribute('disabled');
+  }
+
+
+  function yurbleAgeCheck() {
     if(yurbleAge === 1){
       //baby art
       currentBase = "url('/imgs/baby/yurble_baby";
     } else if (yurbleAge === 2){
       //adult art
       currentBase = "url('/imgs/base/yurble_blue";
+      currentImgFunc();
     } else if (yurbleAge ===3){
       //extreme art
       currentBase = "url('/imgs/evolution/yurble_halloween";
+      currentImgFunc();
     } else if(yurbleAge ===4){
       //tombstone art
       currentBase = "url('/imgs/death/tombstone";
+      currentImgFunc();
       //game over
     }
   }
+
+  function yurbleEmotionCheck() {
+    if(happinessStat.value <=5 && hungerStat.value <=5){
+      emotion = "_sad";
+      currentImgFunc();
+    } else if(happinessStat.value <= 5){
+      emotion = "_sad"
+      currentImgFunc();
+    } else if(hungerStat.value <=5){
+      emotion = "_angry"
+      currentImgFunc();
+    }
+  }
+
 
   function currentImgFunc(){
     currentImagePath = currentBase + emotion + ".png')"

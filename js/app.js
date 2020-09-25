@@ -168,6 +168,7 @@ unlockAbuseBtn.addEventListener('click', unlockAbuse);
 // ---------------------------------------------- FUNCTIONS
 // CLOCK
 const startTimerVar = function() {
+  gameOverCheck();
   timerCalc();
   yurbleAgeCheck();
   yurbleAgeArtCheck();
@@ -375,6 +376,9 @@ function timerCalc(){
   if(timerThree <= 9){
     timerMinute.textContent = `0${timerThree}`;
   }
+  if(timerTwo <=9){
+    timerHour.textContent = `0${timerTwo}`;
+  }
   timer--;
   timerThree--;
 }
@@ -382,7 +386,29 @@ function timerCalc(){
   function currentImgFunc(){
     currentImagePath = currentBase + emotion + ".png')"
     petPic.style.background = currentImagePath;
-    if(yurbleAge === 4){
+    if(yurbleAge === 4 || hungerStat.value <= 0 || happinessStat.value <= 0 || sleepinessStat.value <= 0){
       petPic.style.background = "url('/imgs/death/tombstone.png')"
     }
   }
+
+
+function gameOverCheck(){
+  if(yurbleAge === 4 || hungerStat.value <= 0 || happinessStat.value <= 0|| sleepinessStat.value <= 0){
+    clearInterval(timerStartVarOne);
+    clearInterval(statDecreasersVarOne);
+    currentImgFunc();
+    makeAllSad();
+    ageAdult.style.backgroundColor = "#eee";
+    ageBaby.style.backgroundColor = "#eee";
+    ageFinal.style.backgroundColor = "#eee";
+    for(let i = 0; i < allActionBtns.length; i++){
+      allActionBtns[i].setAttribute('disabled', 'false');
+     }
+     if(cheatMenu){
+      for(let i = 0; i < allActionBtns.length; i++){
+        allCheatBtns[i].setAttribute('disabled', 'false');
+       }
+     }
+  }
+
+}

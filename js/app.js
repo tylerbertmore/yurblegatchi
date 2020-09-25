@@ -103,7 +103,7 @@ createPetBtn.addEventListener('click', function(){
   timerStartVarOne = setInterval(startTimerVar, 1000);
   // stat initializer
   statInit();
-  statDecreasersVarOne = setInterval(statDecreasersVar, 10000);
+  // statDecreasersVarOne = setInterval(statDecreasersVar, 10000);
   console.log(yourYurble);
 });
 
@@ -168,6 +168,7 @@ unlockAbuseBtn.addEventListener('click', unlockAbuse);
 // ---------------------------------------------- FUNCTIONS
 // CLOCK
 const startTimerVar = function() {
+  gameOverCheck();
   timerCalc();
   yurbleAgeCheck();
   yurbleAgeArtCheck();
@@ -208,7 +209,7 @@ statDecreasersVar = function() {
 
 // ACTION BUTTON FUNCTIONS
  function disableButtons() {
-   for(let i = 0; i < allActionBtns.length - 1; i++){
+   for(let i = 0; i < allActionBtns.length; i++){
     allActionBtns[i].setAttribute('disabled', 'false');
    }
    emotion = "_sad";
@@ -287,10 +288,13 @@ function makeAllSad(){
   yourYurble.hunger-=10;
   happinessStat.value-=10;
   yourYurble.happiness-=10;
+  timer = 0;
 }
 
 function killYourYurble(){
+  makeAllSad();
   yurbleAge = 4;
+  numTwelve.innerHTML = "<i class='fas fa-skull-crossbones'></i>";
   // game over funciton?
 }
 

@@ -168,9 +168,12 @@
     background: url('/imgs/baby/yurble_baby.png');
   margin-top: 35%;
   position: relative;
-  
 }
 
+
+.abuse-anim{
+  animation: abuse 3s ease-in-out infinite;
+}
 .play-anim{
   animation: play 1s ease-in-out infinite;
 }
@@ -189,6 +192,24 @@
 
 .sleeping{
   animation: sleeping 5s ease-in-out infinite;
+}
+
+@keyframes abuse{
+  20%{
+    
+  }
+
+  50%{
+    transform: translateY(-50%) translateX(5%);
+  }
+
+  80%{
+    transform: translateY(20%) rotate(25deg);
+  }
+
+  100%{
+    transform: translateY(20%) rotate(25deg);
+  }
 }
 
 @keyframes play{
@@ -309,18 +330,21 @@
 @keyframes idleBaby{
 
   0%{
-    transform: rotate(0deg);
+    transform: rotate(3deg);
   }
-33%{
+25%{
   transform: rotate(-3deg);
 }
 
-  66%{
+  50%{
     transform: rotate(3deg);
   }
 
+  75%{
+    transform: rotate(-3deg);
+  }
   100%{
-    transform: rotate(0deg);
+    transform: rotate(3deg);
   }
 }
 
@@ -367,9 +391,15 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
   }
   /* RED BAR BACKGROUND */
-/* .hunger-bar progress[value]::-webkit-progress-bar {
+.hunger-bar progress[value]::-webkit-progress-bar {
     background-color: red;
-  } */
+  }
+.happiness-bar progress[value]::-webkit-progress-bar {
+    background-color: red;
+  }
+.sleepiness-bar progress[value]::-webkit-progress-bar {
+    background-color: red;
+  }
 .age-container{
     display: flex;
     

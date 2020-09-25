@@ -22,6 +22,9 @@ const ageDeath = document.querySelector('#death');
 let hungerStat = document.querySelector('#hunger');
 let sleepinessStat = document.querySelector('#sleepiness');
 let happinessStat = document.querySelector('#happiness');
+const hungerSelector = document.querySelector('#hunger-selector');
+const sleepinessSelector = document.querySelector('#sleepiness-selector');
+const happinessSelector = document.querySelector('#happiness-selector');
 
 // FORM SELECTORS
 const createPetBtn = document.querySelector('#create-pet-button');
@@ -103,7 +106,7 @@ createPetBtn.addEventListener('click', function(){
   timerStartVarOne = setInterval(startTimerVar, 1000);
   // stat initializer
   statInit();
-  // statDecreasersVarOne = setInterval(statDecreasersVar, 10000);
+  statDecreasersVarOne = setInterval(statDecreasersVar, 10000);
   console.log(yourYurble);
 });
 
@@ -358,17 +361,27 @@ function unlockAbuse(){
   function yurbleEmotionCheck() {
     if(happinessStat.value <=5 && hungerStat.value <=5){
       emotion = "_sad";
+
       disableNapBtn();
       currentImgFunc();
     } else if(happinessStat.value <= 5){
       emotion = "_sad";
+      happinessSelector.classList.add('happiness-bar');
       disableNapBtn();
       currentImgFunc();
     } else if(hungerStat.value <=5){
       emotion = "_angry";
+      hungerSelector.classList.add('hunger-bar');
       disableNapBtn();
       currentImgFunc();
-    } else if((hungerStat.value > 5 || happinessStat.value > 5) && napTime === false){
+    } else if(sleepinessStat.value <=5) {
+      emotion = "_sad";
+      sleepinessSelector.classList.add('sleepiness-bar');
+      currentImgFunc();
+    }else if((hungerStat.value > 5 || happinessStat.value > 5) && napTime === false){
+      happinessSelector.classList.remove('happiness-bar');
+      hungerSelector.classList.remove('hunger-bar');
+      sleepinessSelector.classList.remove('sleepiness-bar');
       enableNapBtn();
     }
   }
@@ -418,6 +431,9 @@ function gameOverCheck(){
     ageAdult.style.backgroundColor = "#eee";
     ageBaby.style.backgroundColor = "#eee";
     ageFinal.style.backgroundColor = "#eee";
+    happinessSelector.classList.add('happiness-bar');
+    hungerSelector.classList.add('hunger-bar');
+    sleepinessSelector.classList.add('sleepiness-bar');
     for(let i = 0; i < allActionBtns.length; i++){
       allActionBtns[i].setAttribute('disabled', 'false');
      }
@@ -430,6 +446,26 @@ function gameOverCheck(){
 
 }
 
+// abuse-anim
+// play-anim
+// feed-anim
+// baby-idle
+// adult-idle
+// sleeping
+
 function animationCheck(){
-  
+  if(emotion === "" && yurbleAge === 1){
+    petPic.classList.add('baby-idle');
+  }else if((emotion === "" && yurbleAge === 2) || (emotion === "" && yurbleAge === 3)){
+    petPic.classList.add('adult-idle');
+  } 
+  else if(emotion === "_sad"){
+    petPic.classList.add('baby-idle');
+  }else if(emotion === "_angry"){
+    petPic.classList.add('adult-idle');
+  }else if(emotion === "_sleep"){
+    petPic.classList.add('sleeping');
+  }else if(emotion === "_injured1"){
+    petPic.classList.add('abuse-anim');
+  }
 }

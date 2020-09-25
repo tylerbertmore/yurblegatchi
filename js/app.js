@@ -429,3 +429,7 @@ function gameOverCheck(){
   }
 
 }
+
+function animationCheck(){
+  
+}

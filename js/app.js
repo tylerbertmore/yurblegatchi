@@ -81,6 +81,7 @@ let emotion = "";
 let currentImagePath = currentBase + emotion + ".png')";
 let timerStartVarOne; 
 let statDecreasersVarOne; 
+let napTime = false;
 
 //-------------------------------EVENT LISTENERS
 
@@ -122,7 +123,6 @@ abuseBtn.addEventListener('click', function(){
 
 feedBtn.addEventListener('click', function(){
   raiseHungerBar();
-  decreaseSleepinessBar();
 });
 
 
@@ -168,7 +168,6 @@ unlockAbuseBtn.addEventListener('click', unlockAbuse);
 // ---------------------------------------------- FUNCTIONS
 // CLOCK
 const startTimerVar = function() {
-  gameOverCheck();
   timerCalc();
   yurbleAgeCheck();
   yurbleAgeArtCheck();
@@ -217,12 +216,20 @@ statDecreasersVar = function() {
    
  }
 
+ function disableNapBtn(){
+  allActionBtns[1].setAttribute('disabled', 'false');
+ }
+function enableNapBtn(){
+  allActionBtns[1].removeAttribute('disabled');
+}
+
  function enableButtons(){
   for(let i = 0; i < allActionBtns.length - 1; i++){
     allActionBtns[i].removeAttribute('disabled');
    }
    lightDiv.classList.toggle('actual-pet-overlay');
    emotion = "";
+   napTime = false;
    currentImgFunc();
  }
 
@@ -241,9 +248,9 @@ statDecreasersVar = function() {
     
   }
  function raiseSleepinessBar(){
-    sleepinessStat.value+=3;
-    yourYurble.sleepiness+=3;
-    
+    sleepinessStat.value+=5;
+    yourYurble.sleepiness+=5;
+    napTime = true;
   }
  function decreaseHappinessBar(){
     happinessStat.value--;
@@ -335,6 +342,7 @@ function unlockAbuse(){
     } else if (yurbleAge === 2){
       //adult art
       currentBase = "url('/imgs/base/yurble_blue";
+      
       currentImgFunc();
     } else if (yurbleAge ===3){
       //extreme art
@@ -346,13 +354,18 @@ function unlockAbuse(){
   function yurbleEmotionCheck() {
     if(happinessStat.value <=5 && hungerStat.value <=5){
       emotion = "_sad";
+      disableNapBtn();
       currentImgFunc();
     } else if(happinessStat.value <= 5){
-      emotion = "_sad"
+      emotion = "_sad";
+      disableNapBtn();
       currentImgFunc();
     } else if(hungerStat.value <=5){
-      emotion = "_angry"
+      emotion = "_angry";
+      disableNapBtn();
       currentImgFunc();
+    } else if((hungerStat.value > 5 || happinessStat.value > 5) && napTime === false){
+      enableNapBtn();
     }
   }
 

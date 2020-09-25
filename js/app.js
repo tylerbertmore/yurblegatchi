@@ -54,6 +54,8 @@ const timeForward5Btn = document.querySelector('#time-forward5');
 const makeHappyBtn = document.querySelector('#force-stage');
 const killBtn = document.querySelector('#kill');
 const unlockAbuseBtn = document.querySelector('#unlock-abuse');
+  // SELECT ALL CHEAT BUTTONS
+const allCheatBtns = document.querySelectorAll('.ch-btn');
 
 class Yurble {
     constructor(name, owner){
@@ -77,7 +79,8 @@ let yourYurble = null;
 let currentBase = "url('/imgs/baby/yurble_baby";
 let emotion = "";
 let currentImagePath = currentBase + emotion + ".png')";
-
+let timerStartVarOne; 
+let statDecreasersVarOne; 
 
 //-------------------------------EVENT LISTENERS
 
@@ -94,16 +97,13 @@ noRadio.addEventListener('click', function(){
 
 // CREATE A PET  EVENT LISTENERS
 createPetBtn.addEventListener('click', function(){
-  console.log(yesRadio.value, noRadio.value, userName.value, petName.value);
   cssInit();
   yourYurble = new Yurble(petName.value, userName.value);
-  setInterval(startTimer, 1000);
+  timerStartVarOne = setInterval(startTimerVar, 1000);
   // stat initializer
   statInit();
-  console.log(currentImagePath);
-  // setInterval(statDecreasers, 5000);
+  statDecreasersVarOne = setInterval(statDecreasersVar, 10000);
   console.log(yourYurble);
-  console.log(yurbleAge);
 });
 
 
@@ -167,13 +167,11 @@ unlockAbuseBtn.addEventListener('click', unlockAbuse);
 
 // ---------------------------------------------- FUNCTIONS
 // CLOCK
-function startTimer() {
+const startTimerVar = function() {
   timerCalc();
-
   yurbleAgeCheck();
   yurbleAgeArtCheck();
   yurbleEmotionCheck();
-  
 }
 // CLOCK HAND ROTATION
 function setRotation(element, rotationRatio) {
@@ -181,7 +179,7 @@ function setRotation(element, rotationRatio) {
 }
 
 // CORE GAMEPLAY DECREASER
-function statDecreasers(){
+statDecreasersVar = function() {
   const randNumOne = Math.floor(Math.random() * 3);
   const randNumTwo = Math.floor(Math.random() * 3);
   const randNumThree = Math.floor(Math.random() * 3);
@@ -274,6 +272,14 @@ function makeAllHappy(){
   happinessStat.value+=5;
   yourYurble.happiness+=5;
 }
+function makeAllSad(){
+  sleepinessStat.value-=10;
+  yourYurble.sleepiness-=10;
+  hungerStat.value-=10;
+  yourYurble.hunger-=10;
+  happinessStat.value-=10;
+  yourYurble.happiness-=10;
+}
 
 function killYourYurble(){
   yurbleAge = 4;
@@ -303,6 +309,21 @@ function unlockAbuse(){
       ageAdult.style.backgroundColor = "#eee";
       ageFinal.style.backgroundColor = "forestgreen";
       console.log(yurbleAge);
+    } else if(timer === -1){
+      yurbleAge++;
+      ageFinal.style.backgroundColor = "#eee";
+      clearInterval(timerStartVarOne);
+      clearInterval(statDecreasersVarOne);
+      currentImgFunc();
+      makeAllSad();
+      for(let i = 0; i < allActionBtns.length; i++){
+        allActionBtns[i].setAttribute('disabled', 'false');
+       }
+       if(cheatMenu){
+        for(let i = 0; i < allActionBtns.length; i++){
+          allCheatBtns[i].setAttribute('disabled', 'false');
+         }
+       }
     }
   }
 
@@ -318,11 +339,6 @@ function unlockAbuse(){
       //extreme art
       currentBase = "url('/imgs/evolution/yurble_halloween";
       currentImgFunc();
-    } else if(yurbleAge ===4){
-      //tombstone art
-      currentBase = "url('/imgs/death/tombstone";
-      currentImgFunc();
-      //game over
     }
   }
 
@@ -366,4 +382,7 @@ function timerCalc(){
   function currentImgFunc(){
     currentImagePath = currentBase + emotion + ".png')"
     petPic.style.background = currentImagePath;
+    if(yurbleAge === 4){
+      petPic.style.background = "url('/imgs/death/tombstone.png')"
+    }
   }

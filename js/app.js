@@ -304,20 +304,20 @@ function cheatForwardFive(){
 }
 
 function makeAllHappy(){
-  sleepinessStat.value+=5;
-  yourYurble.sleepiness+=5;
-  hungerStat.value+=5;
-  yourYurble.hunger+=5;
-  happinessStat.value+=5;
-  yourYurble.happiness+=5;
+  sleepinessStat.value = 10;
+  yourYurble.sleepiness = 10;
+  hungerStat.value = 10;
+  yourYurble.hunger = 10;
+  happinessStat.value = 10;
+  yourYurble.happiness = 10;
 }
 function makeAllSad(){
-  sleepinessStat.value-=10;
-  yourYurble.sleepiness-=10;
-  hungerStat.value-=10;
-  yourYurble.hunger-=10;
-  happinessStat.value-=10;
-  yourYurble.happiness-=10;
+  sleepinessStat.value = 0;
+  yourYurble.sleepiness = 0;
+  hungerStat.value = 0;
+  yourYurble.hunger = 0;
+  happinessStat.value = 0;
+  yourYurble.happiness = 0;
   timer = 0;
 }
 
@@ -368,6 +368,7 @@ function unlockAbuse(){
           allCheatBtns[i].setAttribute('disabled', 'false');
          }
        }
+       gameOverCheck();
     }
   }
 
@@ -500,13 +501,6 @@ function gameOverCheck(){
   }
 
 }
-
-// abuse-anim
-// play-anim
-// feed-anim
-// baby-idle
-// adult-idle
-// sleeping
 
 function animationCheck(){
   if(emotion === "_injured2"){

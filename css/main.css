@@ -13,7 +13,7 @@
     border-right: 2px solid white;
     border-top: 100px solid white;
     margin: 0 10%;
-    
+
   }
   /* HEADER */
   header{
@@ -510,14 +510,43 @@ button:hover{
 .cheat-menu-btn:hover{
     cursor: pointer;
 }
-.hidden{
-    display: none;
+
+
+.game-over{
+  display: flex;
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 5;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 1.2rem;
 }
-
-
+.game-over h3{
+  font-size: 2.5rem;
+  padding: 0;
+  margin: 0;
+  border-bottom: 4px solid white;
+}
+.game-over section{
+  max-width: 300px;
+  padding: 20px;
+  border: 5px solid white;
+  background-color: grey;
+}
+.game-over button{
+  height: 50px;
+  width: 150px;
+  font-size: 1.3rem;
+}
   
-  
-  
+.hidden{
+  display: none;
+}
   
   
   

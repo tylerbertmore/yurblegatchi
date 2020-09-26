@@ -4,6 +4,7 @@ const secretMenuBtn = document.querySelector('.cheat-menu-btn');
 const userNameDisplay = document.querySelector('h1');
 const petNameDisplay = document.querySelector('#pet-name');
 const lightDiv = document.querySelector('#lights-out');
+const gameOverScreen = document.querySelector('.game-over');
 
 // CLOCK
 let timerHour = document.querySelector('#timer2');
@@ -414,6 +415,15 @@ function unlockAbuse(){
     } else if(happinessStat.value <= 5){
       happinessSelector.classList.add('happiness-bar');
     }
+    if(hungerStat.value > 5){
+      hungerSelector.classList.remove('hunger-bar');
+    }
+    if(sleepinessStat.value > 5){
+      sleepinessSelector.classList.remove('sleepiness-bar');
+    }
+    if(happinessStat.value > 5){
+      happinessSelector.classList.remove('happiness-bar');
+    }
   }
 
 
@@ -475,6 +485,7 @@ function gameOverCheck(){
         allCheatBtns[i].setAttribute('disabled', 'false');
        }
      }
+     gameOverScreen.className = 'game-over';
   }
 
 }
@@ -504,3 +515,4 @@ function animationCheck(){
     petPic.classList.add('abuse-anim');
   }
 }
+

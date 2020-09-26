@@ -77,7 +77,7 @@ let yurbleAge = 1;
 let timer = 3600;
 let timerTwo = 60;
 let timerThree = 00;
-let cheatMenu = false;
+let cheatMenu = true;
 let yourYurble = null;
 let currentBase = "url('/imgs/baby/yurble_baby";
 let emotion = "";
@@ -106,7 +106,8 @@ createPetBtn.addEventListener('click', function(){
   timerStartVarOne = setInterval(startTimerVar, 1000);
   // stat initializer
   statInit();
-  statDecreasersVarOne = setInterval(statDecreasersVar, 10000);
+  animationCheck()
+  statDecreasersVarOne = setInterval(statDecreasersVar, 11000);
   console.log(yourYurble);
 });
 
@@ -118,29 +119,47 @@ abuseBtn.addEventListener('click', function(){
   decreaseHungerBar();
   decreaseSleepinessBar();
   emotion = "_injured1";
+  removeClasses();
   currentImgFunc();
-  allActionBtns[4].setAttribute('disabled', 'false')
-  setTimeout(abuseAnimationTwo, 3000);
+  disableButtons();
+  setTimeout(enableButtons, 3000);
+  setTimeout(removeClasses, 3000);
+  setTimeout(abuseAnimationTwo, 3001);
+  
 });
 
 
 feedBtn.addEventListener('click', function(){
-  raiseHungerBar();
+  removeClasses();
+  petPic.classList.add('feed-anim');
+  disableButtons();
+  setTimeout(enableButtons, 5000);
+  setTimeout(removeClasses, 5001);
+  setTimeout(raiseHungerBar, 2500);
+  setTimeout(animationCheck, 5003);
 });
 
 
 napBtn.addEventListener('click', function(){
   raiseSleepinessBar();
   disableButtons();
+  setTimeout(enableButtons, 5000);
   lightDiv.classList.toggle('actual-pet-overlay');
   emotion = "_sleep";
   currentImgFunc();
+  setTimeout(removeClasses, 5000)
+  setTimeout(animationCheck, 5001)
 });
 
 
 playBtn.addEventListener('click', function(){
   raiseHappinessBar();
-  decreaseSleepinessBar();
+  removeClasses();
+  disableButtons();
+  setTimeout(enableButtons, 1000)
+  petPic.classList.add('play-anim');
+  setTimeout(removeClasses, 1001);
+  setTimeout(animationCheck, 1002);
 });
 
 
@@ -186,7 +205,7 @@ function setRotation(element, rotationRatio) {
 statDecreasersVar = function() {
   const randNumOne = Math.floor(Math.random() * 3);
   const randNumTwo = Math.floor(Math.random() * 3);
-  const randNumThree = Math.floor(Math.random() * 3);
+  const randNumThree = Math.floor(Math.random() * 3) + 1;
   happinessStat.value -= randNumOne;
   yourYurble.happiness -= randNumOne;
   if(lightDiv.classList.value === "actual-pet-overlay"){
@@ -215,9 +234,6 @@ statDecreasersVar = function() {
    for(let i = 0; i < allActionBtns.length; i++){
     allActionBtns[i].setAttribute('disabled', 'false');
    }
-   emotion = "_sad";
-   setTimeout(enableButtons, 5000);
-   
  }
 
  function disableNapBtn(){
@@ -227,14 +243,21 @@ function enableNapBtn(){
   allActionBtns[1].removeAttribute('disabled');
 }
 
+
  function enableButtons(){
   for(let i = 0; i < allActionBtns.length - 1; i++){
     allActionBtns[i].removeAttribute('disabled');
    }
-   lightDiv.classList.toggle('actual-pet-overlay');
-   emotion = "";
-   napTime = false;
+   if(napTime === true){
+    lightDiv.classList.toggle('actual-pet-overlay');
+    emotion = "";
+    napTime = false;
+   }
    currentImgFunc();
+ }
+
+ function removeClasses(){
+   petPic.className = 'actual-pet-image';
  }
 
  function decreaseHungerBar(){
@@ -242,8 +265,8 @@ function enableNapBtn(){
     yourYurble.hunger--;
   }
  function raiseHungerBar(){
-    hungerStat.value++;
-    yourYurble.hunger++;
+    hungerStat.value+=4;
+    yourYurble.hunger+=4;
     
   }
  function decreaseSleepinessBar(){
@@ -315,12 +338,14 @@ function unlockAbuse(){
   function yurbleAgeCheck(){
     if(timer === 2999){
       numTwelve.innerHTML = "<i class='fas fa-skull-crossbones'></i>";
+      animationCheck();
       yurbleAge++;
       ageBaby.style.backgroundColor = "#eee";
       ageAdult.style.backgroundColor = "forestgreen";
       console.log(yurbleAge);
     } else if(timer === 1199){
       yurbleAge++;
+      animationCheck();
       ageAdult.style.backgroundColor = "#eee";
       ageFinal.style.backgroundColor = "forestgreen";
       console.log(yurbleAge);
@@ -348,13 +373,20 @@ function unlockAbuse(){
       currentBase = "url('/imgs/baby/yurble_baby";
     } else if (yurbleAge === 2){
       //adult art
-      currentBase = "url('/imgs/base/yurble_blue";
+      if(currentBase !== "url('/imgs/base/yurble_blue"){
+        currentBase = "url('/imgs/base/yurble_blue";
+        currentImgFunc();
+      }
       
-      currentImgFunc();
+
+      
     } else if (yurbleAge ===3){
       //extreme art
-      currentBase = "url('/imgs/evolution/yurble_halloween";
-      currentImgFunc();
+      
+      if(currentBase !== "url('/imgs/evolution/yurble_halloween"){
+        currentBase = "url('/imgs/evolution/yurble_halloween";
+        currentImgFunc();
+      }
     }
   }
 
@@ -367,12 +399,16 @@ function unlockAbuse(){
     } else if(happinessStat.value <= 5){
       emotion = "_sad";
       happinessSelector.classList.add('happiness-bar');
-      disableNapBtn();
+      if(sleepinessStat >= 5){
+        disableNapBtn();
+      }
       currentImgFunc();
     } else if(hungerStat.value <=5){
       emotion = "_angry";
       hungerSelector.classList.add('hunger-bar');
-      disableNapBtn();
+      if(sleepinessStat >= 5){
+        disableNapBtn();
+      }
       currentImgFunc();
     } else if(sleepinessStat.value <=5) {
       emotion = "_sad";
@@ -382,7 +418,6 @@ function unlockAbuse(){
       happinessSelector.classList.remove('happiness-bar');
       hungerSelector.classList.remove('hunger-bar');
       sleepinessSelector.classList.remove('sleepiness-bar');
-      enableNapBtn();
     }
   }
 
@@ -416,8 +451,10 @@ function timerCalc(){
   function currentImgFunc(){
     currentImagePath = currentBase + emotion + ".png')"
     petPic.style.background = currentImagePath;
+    animationCheck();
     if(yurbleAge === 4 || hungerStat.value <= 0 || happinessStat.value <= 0 || sleepinessStat.value <= 0){
       petPic.style.background = "url('/imgs/death/tombstone.png')"
+      petPic.className = 'actual-pet-image';
     }
   }
 
@@ -454,7 +491,9 @@ function gameOverCheck(){
 // sleeping
 
 function animationCheck(){
-  if(emotion === "" && yurbleAge === 1){
+  if(emotion === "_injured2"){
+    petPic.classList.add('baby-idle');
+  }else if(emotion === "" && yurbleAge === 1){
     petPic.classList.add('baby-idle');
   }else if((emotion === "" && yurbleAge === 2) || (emotion === "" && yurbleAge === 3)){
     petPic.classList.add('adult-idle');

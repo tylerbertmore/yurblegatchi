@@ -32,12 +32,27 @@
     margin-top: 0;
     border-bottom: 10px solid white;
     display: flex;
-    justify-content: space-between;
+    align-self: flex-start;
 }
 
-h1 i {
+.question-top{
+  position: absolute;
+  top: 8%;
+  left: 49%;
+  color: red;
   font-size: xx-large;
 }
+.basic-info i {
+  color: red;
+}
+
+.question-top:hover{
+  color: gray;
+  cursor: pointer;
+}
+
+
+
   header.clock{
       width: 30%;
   }
@@ -297,11 +312,11 @@ box-shadow: 3px 4px 15px 0px rgba(0,0,0,0.75);
 
   .slideUp{
     transform: translateY(120%);
-  transition: transform 1.2s linear;
+  transition: transform 1.2s ease-out;
   }
   .slideDown{
     transform: translateY(-120%);
-  transition: transform 1.2s linear;
+  transition: transform 1.2s ease-out;
   }
 
 .test1 progress, .test2 progress {
@@ -333,6 +348,7 @@ box-shadow: 3px 4px 15px 0px rgba(0,0,0,0.75);
     width: 100%;
     height: 150px;
     border: 2px solid white;
+    background-color: #eee;
     margin-bottom: 10%;
 }
 
@@ -354,14 +370,52 @@ box-shadow: 3px 4px 15px 0px rgba(0,0,0,0.75);
     margin: 10px;
     padding: 10px;
     font-size: 16px;
+
 }
+
+.action-container button{
+  color: white;
+  border: none;
+  border-radius: 50%;
+  height: 75px;
+  width: 75px;
+  border: 1px solid black;
+}
+.action-container button:disabled{
+  opacity: 0.3;
+  border: none;
+}
+
+
+button:focus{
+  outline: none;
+  
+}
+#feed{
+  background-color: forestgreen;
+}
+#nap{
+  background-color: steelblue;
+}
+#play{
+  background-color: orange;
+}
+#lights{
+  background-color: darkslategray;
+}
+#abuse{
+  background-color: orangered;
+}
+
+
 button:hover{
-    background-color: green;
+    opacity: 0.8;
     cursor: pointer;
 }
 .cheat-menu-btn{
     width: 2px;
     height: 2px;
+    /* background-color: #C1CEFE; */
     background-color: black;
     margin-bottom: 5%;
 }
@@ -583,3 +637,5 @@ button:hover{
     transform: rotate(3deg);
   }
 }
+
+

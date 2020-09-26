@@ -26,6 +26,9 @@ let happinessStat = document.querySelector('#happiness');
 const hungerSelector = document.querySelector('#hunger-selector');
 const sleepinessSelector = document.querySelector('#sleepiness-selector');
 const happinessSelector = document.querySelector('#happiness-selector');
+let hungerSpan = document.querySelector('#hunger-level');
+let happinessSpan = document.querySelector('#happiness-level');
+let sleepinessSpan = document.querySelector('#sleepiness-level');
 
 // FORM SELECTORS
 const createPetBtn = document.querySelector('#create-pet-button');
@@ -107,7 +110,7 @@ createPetBtn.addEventListener('click', function(){
   timerStartVarOne = setInterval(startTimerVar, 1000);
   // stat initializer
   statInit();
-  animationCheck()
+  animationCheck();
   statDecreasersVarOne = setInterval(statDecreasersVar, 11000);
   console.log(yourYurble);
 });
@@ -196,6 +199,7 @@ const startTimerVar = function() {
   yurbleAgeCheck();
   yurbleAgeArtCheck();
   yurbleStatusCheck();
+  statSpan();
 }
 // CLOCK HAND ROTATION
 function setRotation(element, rotationRatio) {
@@ -219,6 +223,7 @@ statDecreasersVar = function() {
   hungerStat.value -= randNumThree;
   yourYurble.hunger -= randNumThree;
   console.log(yourYurble);
+  statSpan();
   if(hungerStat.value <= 0 || sleepinessStat <=0 || happinessStat <=0){
     gameOverCheck();
   }
@@ -267,31 +272,35 @@ function enableNapBtn(){
  function decreaseHungerBar(){
     hungerStat.value--;
     yourYurble.hunger--;
+    statSpan();
   }
  function raiseHungerBar(){
     hungerStat.value+=4;
     yourYurble.hunger+=4;
+    statSpan();
     
   }
  function decreaseSleepinessBar(){
     sleepinessStat.value--;
     yourYurble.sleepiness--;
-    
+    statSpan();
   }
  function raiseSleepinessBar(){
     sleepinessStat.value+=5;
     yourYurble.sleepiness+=5;
     napTime = true;
+    statSpan();
   }
  function decreaseHappinessBar(){
     happinessStat.value--;
     yourYurble.happiness--;
+    statSpan();
     
   }
  function raiseHappinessBar(){ 
     happinessStat.value++;
     yourYurble.happiness++;
-    
+    statSpan();
   }
 
   //CHEAT MENU FUNCNTIONS
@@ -310,6 +319,7 @@ function makeAllHappy(){
   yourYurble.hunger = 10;
   happinessStat.value = 10;
   yourYurble.happiness = 10;
+  statSpan();
 }
 function makeAllSad(){
   sleepinessStat.value = 0;
@@ -318,12 +328,15 @@ function makeAllSad(){
   yourYurble.hunger = 0;
   happinessStat.value = 0;
   yourYurble.happiness = 0;
+  statSpan();
   timer = 0;
+
 }
 
 function killYourYurble(){
   makeAllSad();
   yurbleAge = 4;
+  statSpan();
   numTwelve.innerHTML = "<i class='fas fa-skull-crossbones'></i>";
   // game over funciton?
 }
@@ -332,6 +345,11 @@ function unlockAbuse(){
   allActionBtns[4].removeAttribute('disabled');
 }
 
+function statSpan(){
+  hungerSpan.textContent = hungerStat.value;
+  happinessSpan.textContent = happinessStat.value;
+  sleepinessSpan.textContent = sleepinessStat.value;
+}
 
   function abuseAnimationTwo(){
     emotion = "_injured2";
@@ -393,6 +411,7 @@ function unlockAbuse(){
   }
 
   function yurbleStatusCheck() {
+
     if(hungerStat.value <= 3 && happinessStat.value <= 3 && sleepinessStat.value <= 3){
     hungerSelector.classList.add('hunger-bar');
     happinessSelector.classList.add('happiness-bar');

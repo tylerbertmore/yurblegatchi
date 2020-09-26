@@ -10,8 +10,10 @@
 </head>
 <body>
 <main>
+    <div class="question-top"><i class="far fa-question-circle"></i></div>
     <header>
-        <h1>Tomagatchi<i class="far fa-question-circle"></i></h1>
+        
+        <h1>Yurblegatchi</h1>
         <div class="clock hidden">
             <div class="hand minute"></div>
             <div class="number number1">I</div>
@@ -56,15 +58,15 @@
             </div>
         </div>
         <div id="hunger-selector">
-            <h3>HUNGER</h3>
+            <h3>HUNGER: <span id="hunger-level">10</span></h3>
             <progress id="hunger" value="2" max="10"></progress>
         </div>
         <div id="sleepiness-selector">
-            <h3>SLEEPINESS</h3>
+            <h3>SLEEPINESS: <span id="sleepiness-level">10</span></h3>
             <progress id="sleepiness" value="5" max="10"></progress>
         </div>
         <div id="happiness-selector">
-            <h3>HAPPINESS</h3>
+            <h3>HAPPINESS: <span id="happiness-level">10</span></h3>
             <progress id="happiness" value="9" max="10"></progress>
         </div>
     </div>
@@ -98,8 +100,6 @@
         <button class="ac-btn" id="feed">FEED</button>
         <button class="ac-btn" id="nap">NAP</button>
         <button class="ac-btn" id="play">PLAY</button>
-    </div>
-    <div>
         <button class="ac-btn" id="lights">LIGHTS</button>
         <button class="ac-btn" id="abuse" disabled>ABUSE</button>
     </div>
@@ -127,6 +127,13 @@
         <h3>Game Over</h3>
         <p>Your yurble has died! Fortunately for you, Yurbles aren't hard to come by. Click "Play Again" below to start the fun over again!</p>
         <button onClick="window.location.reload();" class="play-again"><strong>Play Again?</strong></button>
+    </section>
+</div>
+<div class="tutorial hidden">
+    <section>
+        <h3>Instructions</h3>
+        <p>Your yurble has died! Fortunately for you, Yurbles aren't hard to come by. Click "Play Again" below to start the fun over again!</p>
+        
     </section>
 </div>
 

@@ -380,10 +380,7 @@ function unlockAbuse(){
       if(currentBase !== "url('/imgs/base/yurble_blue"){
         currentBase = "url('/imgs/base/yurble_blue";
         currentImgFunc();
-      }
-      
-
-      
+      }  
     } else if (yurbleAge ===3){
       //extreme art
       
@@ -395,33 +392,47 @@ function unlockAbuse(){
   }
 
   function yurbleStatusCheck() {
-    if(hungerStat.value <= 5 && happinessStat.value <= 5 && sleepinessStat.value <= 5){
+    if(hungerStat.value <= 3 && happinessStat.value <= 3 && sleepinessStat.value <= 3){
     hungerSelector.classList.add('hunger-bar');
     happinessSelector.classList.add('happiness-bar');
     sleepinessSelector.classList.add('sleepiness-bar');
-    } else if(hungerStat.value <= 5 && happinessStat.value <= 5){
+    emotion = "_angry";
+  
+    } else if(hungerStat.value <= 3 && happinessStat.value <= 3){
       hungerSelector.classList.add('hunger-bar');
       happinessSelector.classList.add('happiness-bar');
-    } else if(happinessStat.value <= 5 && sleepinessStat.value <= 5){
+      emotion = "_sad";
+    
+    } else if(happinessStat.value <= 3 && sleepinessStat.value <= 3){
       happinessSelector.classList.add('happiness-bar');
       sleepinessSelector.classList.add('sleepiness-bar');
-    } else if(hungerStat.value <= 5 && sleepinessStat.value <= 5){
+      emotion = "_sad";
+    
+    } else if(hungerStat.value <= 3 && sleepinessStat.value <= 3){
       hungerSelector.classList.add('hunger-bar');
       sleepinessSelector.classList.add('sleepiness-bar');
-    } else if(hungerStat.value <= 5){
+      emotion = "_sad";
+    
+    } else if(hungerStat.value <= 3){
       hungerSelector.classList.add('hunger-bar');
-    } else if(sleepinessStat.value <= 5){
+      emotion = "_angry";
+    
+    } else if(sleepinessStat.value <= 3){
       sleepinessSelector.classList.add('sleepiness-bar');
-    } else if(happinessStat.value <= 5){
+      emotion = "_sad";
+    
+    } else if(happinessStat.value <= 3){
       happinessSelector.classList.add('happiness-bar');
+      emotion = "_sad";
+    
     }
-    if(hungerStat.value > 5){
+    if(hungerStat.value > 3){
       hungerSelector.classList.remove('hunger-bar');
     }
-    if(sleepinessStat.value > 5){
+    if(sleepinessStat.value > 3){
       sleepinessSelector.classList.remove('sleepiness-bar');
     }
-    if(happinessStat.value > 5){
+    if(happinessStat.value > 3){
       happinessSelector.classList.remove('happiness-bar');
     }
   }

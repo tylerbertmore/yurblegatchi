@@ -194,7 +194,7 @@ const startTimerVar = function() {
   timerCalc();
   yurbleAgeCheck();
   yurbleAgeArtCheck();
-  yurbleEmotionCheck();
+  yurbleStatusCheck();
 }
 // CLOCK HAND ROTATION
 function setRotation(element, rotationRatio) {
@@ -218,6 +218,9 @@ statDecreasersVar = function() {
   hungerStat.value -= randNumThree;
   yourYurble.hunger -= randNumThree;
   console.log(yourYurble);
+  if(hungerStat.value <= 0 || sleepinessStat <=0 || happinessStat <=0){
+    gameOverCheck();
+  }
 }
 
 
@@ -390,36 +393,29 @@ function unlockAbuse(){
     }
   }
 
-  function yurbleEmotionCheck() {
-    if(happinessStat.value <=5 && hungerStat.value <=5){
-      emotion = "_sad";
-
-      disableNapBtn();
-      currentImgFunc();
-    } else if(happinessStat.value <= 5){
-      emotion = "_sad";
-      happinessSelector.classList.add('happiness-bar');
-      if(sleepinessStat >= 5){
-        disableNapBtn();
-      }
-      currentImgFunc();
-    } else if(hungerStat.value <=5){
-      emotion = "_angry";
+  function yurbleStatusCheck() {
+    if(hungerStat.value <= 5 && happinessStat.value <= 5 && sleepinessStat.value <= 5){
+    hungerSelector.classList.add('hunger-bar');
+    happinessSelector.classList.add('happiness-bar');
+    sleepinessSelector.classList.add('sleepiness-bar');
+    } else if(hungerStat.value <= 5 && happinessStat.value <= 5){
       hungerSelector.classList.add('hunger-bar');
-      if(sleepinessStat >= 5){
-        disableNapBtn();
-      }
-      currentImgFunc();
-    } else if(sleepinessStat.value <=5) {
-      emotion = "_sad";
+      happinessSelector.classList.add('happiness-bar');
+    } else if(happinessStat.value <= 5 && sleepinessStat.value <= 5){
+      happinessSelector.classList.add('happiness-bar');
       sleepinessSelector.classList.add('sleepiness-bar');
-      currentImgFunc();
-    }else if((hungerStat.value > 5 || happinessStat.value > 5) && napTime === false){
-      happinessSelector.classList.remove('happiness-bar');
-      hungerSelector.classList.remove('hunger-bar');
-      sleepinessSelector.classList.remove('sleepiness-bar');
+    } else if(hungerStat.value <= 5 && sleepinessStat.value <= 5){
+      hungerSelector.classList.add('hunger-bar');
+      sleepinessSelector.classList.add('sleepiness-bar');
+    } else if(hungerStat.value <= 5){
+      hungerSelector.classList.add('hunger-bar');
+    } else if(sleepinessStat.value <= 5){
+      sleepinessSelector.classList.add('sleepiness-bar');
+    } else if(happinessStat.value <= 5){
+      happinessSelector.classList.add('happiness-bar');
     }
   }
+
 
 function cssInit(){
   userNameDisplay.innerText = `${userName.value}'s Yurble`;

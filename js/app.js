@@ -5,6 +5,9 @@ const userNameDisplay = document.querySelector('h1');
 const petNameDisplay = document.querySelector('#pet-name');
 const lightDiv = document.querySelector('#lights-out');
 const gameOverScreen = document.querySelector('.game-over');
+const questionTop = document.querySelector('.question-top');
+const tutorial = document.querySelector('.tutorial');
+const closeIcon = document.querySelector('#info-close');
 
 // CLOCK
 let timerHour = document.querySelector('#timer2');
@@ -91,6 +94,14 @@ let statDecreasersVarOne;
 let napTime = false;
 
 //-------------------------------EVENT LISTENERS
+
+questionTop.addEventListener('click', function(){
+  tutorial.classList.toggle('hidden');
+});
+
+closeIcon.addEventListener('click', function(){
+  tutorial.classList.toggle('hidden');
+});
 
 // ABUSE PET RADIO BUTTONS
 yesRadio.addEventListener('click', function(){

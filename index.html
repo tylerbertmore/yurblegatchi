@@ -39,9 +39,11 @@
 <section id="pet-info">
     
     <div class="status">
-        <section class="basic-info"><p>Welcome to Yurblegatchi! To start, create a new Yurble to the right using the form. If you want detailed instructions, click the "<i class="far fa-question-circle"></i>" icon at the top of the page</p>
+        <section class="basic-info">
+                <h2>The Basics:</h2>
+            <p>Welcome to Yurblegatchi! To start, create a new Yurble to the right using the form. If you want detailed instructions, click the "<i class="far fa-question-circle"></i>" icon at the top of the page</p>
 
-            <p class="test1">After creating your Yurble you will be responsible for its care. You will see three bars like this: <br>
+            <p class="test1">After creating your Yurble you will be responsible for its care. You will see three bars of different colors like this: <br>
                 <progress id="test1" value="9" max="10"> 90% </progress>
             </p>
             <p class="test2">The back of the bar will turn red, when an attribute is low. If it reaches 0, <strong>YOUR YURBLE WILL DIE!</strong><br>
@@ -132,9 +134,23 @@
 <div class="tutorial hidden">
     <section>
         <h3>Detailed Instructions  <i id="info-close" class="far fa-times-circle"></i> </h3>
-        <h4>Starting</h4>
-        <p>Your yurble has died! Fortunately for you, Yurbles aren't hard to come by. Click "Play Again" below to start the fun over again!</p>
-        
+        <h4>Yurbles live for 60 minutes and go through several stages</h4>
+        <div class="life-cycle">
+            <div><p>0 - 10 minutes</p>
+                <img src="./imgs/baby/yurble_baby.png" alt="Baby Yurble"><p>Stage 1</p></div>
+            <div><p>10 - 40 minutes</p>
+                <img src="./imgs/base/yurble_blue.png" alt="Teenage Yurble"><p>Stage 2</p></div>
+            <div><p>40 - 60 minutes</p><img src="./imgs/evolution/yurble_halloween.png" alt="Adult Yurble"><p>Stage 3</p></div>
+            <div><p>60 minutes</p><img src="./imgs/death/tombstone.png" alt="Tomb Stone"><p>Stage Death</p></div>
+        </div>
+        <h4>Click buttons that correspond with a specific color to keep your Yurble happy</h4>
+        <img class="info-two" src="./imgs/info/info-status.jpeg" alt="Attribute Example">
+        <h4>Attributes will randomly decrease based on current stage</h4>
+        <img class="info-two" src="./imgs/info/info-status2.jpeg" alt="Attribute Example">
+        <h4>When an attribute is critical, your Yurble will cry or pout. </h4>
+        <img class="info-two" src="./imgs/info/info-status3.jpeg" alt="Attribute Example">
+        <h4>If you don't fix the situation immediately...</h4>
+        <img class="info-two" src="./imgs/info/info-status4.jpeg" alt="Attribute Example">
     </section>
 </div>
 

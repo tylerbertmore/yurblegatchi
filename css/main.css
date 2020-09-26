@@ -102,7 +102,7 @@
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     transform-origin: bottom;
-    z-index: 10;
+    z-index: 3;
     transform: translateX(-50%) rotate(calc(var(--rotation) * 1deg));
     width: 5px;
     height: 35%;
@@ -113,7 +113,7 @@
     content: '';
     position: absolute;
     background-color: black;
-    z-index: 11;
+    z-index: 4;
     width: 15px;
     height: 15px;
     top: 50%;
@@ -249,8 +249,16 @@ box-shadow: 3px 4px 15px 0px rgba(0,0,0,0.75);
     border: 2px solid black;
 
 }
+#sleepiness[value]::-webkit-progress-value{
+  background-color: steelblue;
+}
+#happiness[value]::-webkit-progress-value{
+  background-color: goldenrod;
+}
+#hunger[value]::-webkit-progress-value{
+  background-color: forestgreen;
+}
 .status progress[value]::-webkit-progress-value {
-    background-color: green;
       border-radius: 2px; 
       background-size: 35px 20px, 100% 100%, 100% 100%;
     border-right: 2px solid black;
@@ -372,6 +380,10 @@ box-shadow: 3px 4px 15px 0px rgba(0,0,0,0.75);
     font-size: 16px;
 
 }
+.basic-info h2 {
+  margin: 0;
+  padding: 0;
+}
 
 .action-container button{
   color: white;
@@ -428,6 +440,11 @@ button:hover{
 }
 .tutorial{
   z-index: 5;
+  overflow: scroll;
+}
+.info-two{
+  height: 300px;
+  width: 300px;
 }
 .game-over, .tutorial{
   display: flex;
@@ -459,10 +476,15 @@ button:hover{
 }
 .tutorial section{
   max-width: 700px;
+  max-height: 500px;
+  margin-top: 7%;
   padding: 0 20px;
   border: 5px solid slategray;
   background-color: #eee;
+  overflow: scroll;
 }
+
+
 .tutorial h3{
   display: flex;
   justify-content: space-between;
@@ -474,6 +496,10 @@ button:hover{
   right: 0;
   top: 5px;
   color: red;
+}
+.life-cycle{
+  display: flex;
+  text-align: center;
 }
 
 .game-over button{

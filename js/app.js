@@ -84,7 +84,7 @@ let yurbleAge = 1;
 let timer = 3600;
 let timerTwo = 60;
 let timerThree = 00;
-let cheatMenu = true;
+let cheatMenu = false;
 let yourYurble = null;
 let currentBase = "url('/imgs/baby/yurble_baby";
 let emotion = "";
@@ -528,6 +528,7 @@ function gameOverCheck(){
        }
      }
      gameOverScreen.className = 'game-over';
+     tutorial.classList.add('hidden');
   }
 
 }

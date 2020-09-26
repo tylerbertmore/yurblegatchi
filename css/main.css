@@ -9,10 +9,12 @@
     align-items: center;
     flex-direction: column;
     min-height: 100vh;
-    border-left: 2px solid white;
-    border-right: 2px solid white;
-    border-top: 100px solid white;
-    margin: 0 10%;
+    border: 2px solid white;
+    padding: 2%;
+    margin: 0;
+    -webkit-box-shadow: 3px 4px 15px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 3px 4px 15px 0px rgba(0,0,0,0.75);
+    box-shadow: 3px 4px 15px 0px rgba(0,0,0,0.75);
 
   }
   /* HEADER */
@@ -25,11 +27,17 @@
   }
 
   header h1{
-      width: 50%;
-      padding-right: 20px;
-      margin-top: 0;
-      border-bottom: 10px solid white;
-  }
+    width: 50%;
+    padding-right: 20px;
+    margin-top: 0;
+    border-bottom: 10px solid white;
+    display: flex;
+    justify-content: space-between;
+}
+
+h1 i {
+  font-size: xx-large;
+}
   header.clock{
       width: 30%;
   }
@@ -114,7 +122,15 @@
   
   /* MAIN CONTENT */
   main{
-    min-width: 700px;
+    display: block;
+    min-width: 750px;
+    min-height: 600px;
+    background-color: #C1CEFE;
+    border: 4px solid white;
+    padding: 0 3%;
+    -webkit-box-shadow: 3px 4px 15px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 3px 4px 15px 0px rgba(0,0,0,0.75);
+box-shadow: 3px 4px 15px 0px rgba(0,0,0,0.75);
   }
 
   /* PET INFO */
@@ -124,18 +140,36 @@
       overflow: hidden;
   }
 
+.create-pet, .basic-info{
+  border-top: 2px solid white;
+  border-bottom: 2px solid white;
+  
+  
+}
+.create-pet{
+  border-left: 1px solid white;
+  border-right: 2px solid white;
+}
+
+.basic-info{
+  border-right: 1px solid white;
+  border-left: 2px solid white;
+}
+
 
 .pet, .status {
     width: 50%;
-    margin-top: 2%;
     margin-bottom: 5%;
     position: relative;
+    min-height: 350px;
 }
+
+
 
 .pet {
     position: relative;
     text-align: center;
-    /* border: 2px solid white; */
+
     background-image: url('/imgs/backgrounds/berryforest.png');
 
     background-size: cover;
@@ -170,6 +204,209 @@
 }
 
 
+
+
+
+.actual-pet-overlay{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+}
+.pet-footer{
+    position: absolute;
+    bottom: 0;
+    height: 15px;
+    width: 100%;
+    margin: 10px 0 0;
+    font-size: 10px;
+    
+}
+/* STATUS BARS  */
+.status h3{
+    margin-bottom: 0;
+}
+
+.status progress{
+    height: 32px;
+    width: 300px;
+    border-radius: 0%;
+    border: 2px solid black;
+
+}
+.status progress[value]::-webkit-progress-value {
+    background-color: green;
+      border-radius: 2px; 
+      background-size: 35px 20px, 100% 100%, 100% 100%;
+    border-right: 2px solid black;
+  }
+
+      
+.status progress[value]::-webkit-progress-bar {
+    background-color: #eee;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+  }
+  /* RED BAR BACKGROUND */
+.hunger-bar progress[value]::-webkit-progress-bar {
+    background-color: red;
+  }
+.happiness-bar progress[value]::-webkit-progress-bar {
+    background-color: red;
+  }
+.sleepiness-bar progress[value]::-webkit-progress-bar {
+    background-color: red;
+  }
+.age-container{
+    display: flex;
+    
+}
+
+
+#baby , #adult, #final{
+    width: 40px;
+    height: 40px;
+    background-color: #eee;
+    border: 2px solid black;
+    margin-right: 4px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 35px;
+}
+
+#baby{
+    background-color: green;
+}
+  /* BASIC INFO AND CREATE A PET */
+  .create-pet, .basic-info{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    width: 100%;
+  height: 100%;
+  position: absolute;
+  text-align: center;
+  z-index: 2;
+  background-color: #eee;
+  padding: 5px;
+  }
+
+
+
+  .slideUp{
+    transform: translateY(120%);
+  transition: transform 1.2s linear;
+  }
+  .slideDown{
+    transform: translateY(-120%);
+  transition: transform 1.2s linear;
+  }
+
+.test1 progress, .test2 progress {
+    height: 15px;
+    width: 150px;
+}
+
+.create-pet p {
+    margin: 0;
+    padding: 0;
+}
+
+.create-pet button {
+    margin-top: 15px;
+    height: 40px;
+    width: 150px;
+}
+
+.test2 progress[value]::-webkit-progress-bar {
+    background-color: red;
+  } 
+
+/* ACTION & CHEAT CONTAINER */
+.action-container, .cheat-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 150px;
+    border: 2px solid white;
+    margin-bottom: 10%;
+}
+
+.cheat-container{
+    height: 200px;
+    background: black;
+    color: forestgreen;
+    border: 2px solid forestgreen;
+}
+.cheat-container button{
+    background-color: darkslategrey;
+    color: forestgreen;
+}
+.cheat-container button:hover{
+    background-color: lightgray;
+    
+}
+.action-container button, .cheat-container button {
+    margin: 10px;
+    padding: 10px;
+    font-size: 16px;
+}
+button:hover{
+    background-color: green;
+    cursor: pointer;
+}
+.cheat-menu-btn{
+    width: 2px;
+    height: 2px;
+    background-color: black;
+    margin-bottom: 5%;
+}
+.cheat-menu-btn:hover{
+    cursor: pointer;
+}
+
+
+.game-over{
+  display: flex;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  background-color: rgba(0, 0, 0, 0.8);
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 1.2rem;
+}
+.game-over h3{
+  font-size: 2.5rem;
+  padding: 0;
+  margin: 0;
+  border-bottom: 4px solid white;
+}
+.game-over section{
+  max-width: 300px;
+  padding: 20px;
+  border: 5px solid white;
+  background-color: grey;
+}
+.game-over button{
+  height: 50px;
+  width: 150px;
+  font-size: 1.3rem;
+}
+  
+.hidden{
+  display: none;
+}
+  
+  
 .abuse-anim{
   animation: abuse 3s ease-in-out;
 }
@@ -346,207 +583,3 @@
     transform: rotate(3deg);
   }
 }
-
-
-
-.actual-pet-overlay{
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.8);
-}
-.pet-footer{
-    position: absolute;
-    bottom: 0;
-    height: 15px;
-    width: 100%;
-    margin: 10px 0 0;
-    font-size: 10px;
-    
-}
-/* STATUS BARS  */
-.status h3{
-    margin-bottom: 0;
-}
-
-.status progress{
-    height: 40px;
-    width: 300px;
-    border-radius: 0%;
-    border: 2px solid black;
-
-}
-.status progress[value]::-webkit-progress-value {
-    background-color: green;
-      border-radius: 2px; 
-      background-size: 35px 20px, 100% 100%, 100% 100%;
-    border-right: 2px solid black;
-  }
-
-      
-.status progress[value]::-webkit-progress-bar {
-    background-color: #eee;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
-  }
-  /* RED BAR BACKGROUND */
-.hunger-bar progress[value]::-webkit-progress-bar {
-    background-color: red;
-  }
-.happiness-bar progress[value]::-webkit-progress-bar {
-    background-color: red;
-  }
-.sleepiness-bar progress[value]::-webkit-progress-bar {
-    background-color: red;
-  }
-.age-container{
-    display: flex;
-    
-}
-
-
-#baby , #adult, #final{
-    width: 40px;
-    height: 40px;
-    background-color: #eee;
-    border: 2px solid black;
-    margin-right: 4px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 35px;
-}
-
-#baby{
-    background-color: green;
-}
-  /* BASIC INFO AND CREATE A PET */
-  .create-pet, .basic-info{
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    width: 100%;
-  height: 100%;
-  position: absolute;
-  text-align: center;
-  z-index: 2;
-  background-color: #eee;
-  padding: 5px;
-  }
-
-
-
-  .slideUp{
-    transform: translateY(120%);
-  transition: transform 1.2s linear;
-  }
-  .slideDown{
-    transform: translateY(-120%);
-  transition: transform 1.2s linear;
-  }
-
-.test1 progress, .test2 progress {
-    height: 15px;
-    width: 150px;
-}
-
-.create-pet p {
-    margin: 0;
-    padding: 0;
-}
-
-.create-pet button {
-    margin-top: 15px;
-    height: 40px;
-    width: 150px;
-}
-
-.test2 progress[value]::-webkit-progress-bar {
-    background-color: red;
-  } 
-
-/* ACTION & CHEAT CONTAINER */
-.action-container, .cheat-container{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 150px;
-    border: 2px solid white;
-    margin-bottom: 10%;
-}
-
-.cheat-container{
-    height: 200px;
-    background: black;
-    color: forestgreen;
-    border: 2px solid forestgreen;
-}
-.cheat-container button{
-    background-color: darkslategrey;
-    color: forestgreen;
-}
-.cheat-container button:hover{
-    background-color: lightgray;
-    
-}
-.action-container button, .cheat-container button {
-    margin: 10px;
-    padding: 10px;
-    font-size: 16px;
-}
-button:hover{
-    background-color: green;
-    cursor: pointer;
-}
-.cheat-menu-btn{
-    width: 2px;
-    height: 2px;
-    background-color: black;
-    margin-bottom: 5%;
-}
-.cheat-menu-btn:hover{
-    cursor: pointer;
-}
-
-
-.game-over{
-  display: flex;
-  position: absolute;
-  width: 100%;
-  height: 100vh;
-  top: 0;
-  left: 0;
-  background-color: rgba(0, 0, 0, 0.8);
-  z-index: 5;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  font-size: 1.2rem;
-}
-.game-over h3{
-  font-size: 2.5rem;
-  padding: 0;
-  margin: 0;
-  border-bottom: 4px solid white;
-}
-.game-over section{
-  max-width: 300px;
-  padding: 20px;
-  border: 5px solid white;
-  background-color: grey;
-}
-.game-over button{
-  height: 50px;
-  width: 150px;
-  font-size: 1.3rem;
-}
-  
-.hidden{
-  display: none;
-}
-  
-  
-  

@@ -86,7 +86,7 @@ let timerTwo = 60;
 let timerThree = 00;
 let cheatMenu = false;
 let yourYurble = null;
-let currentBase = "url('/imgs/baby/yurble_baby";
+let currentBase = "url('../imgs/baby/yurble_baby";
 let emotion = "";
 let currentImagePath = currentBase + emotion + ".png')";
 let timerStartVarOne; 
@@ -122,7 +122,7 @@ createPetBtn.addEventListener('click', function(){
   // stat initializer
   statInit();
   animationCheck();
-  statDecreasersVarOne = setInterval(statDecreasersVar, 11000);
+  // statDecreasersVarOne = setInterval(statDecreasersVar, 11000);
   console.log(yourYurble);
 });
 
@@ -509,7 +509,7 @@ function timerCalc(){
     petPic.style.background = currentImagePath;
     animationCheck();
     if(yurbleAge === 4 || hungerStat.value <= 0 || happinessStat.value <= 0 || sleepinessStat.value <= 0){
-      petPic.style.background = "url('/imgs/death/tombstone.png')"
+      petPic.style.background = "url('../imgs/death/tombstone.png')"
       petPic.className = 'actual-pet-image';
     }
   }

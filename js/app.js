@@ -44,6 +44,7 @@ const createPetAnim = document.querySelector('.create-pet');
 
 // PET SELECTORS
 const petPic = document.querySelector('.actual-pet-image');
+const petContainer = document.querySelector('.pet-image');
 
 
 // ACTION BUTTON SELECTORS
@@ -86,7 +87,7 @@ let timerTwo = 60;
 let timerThree = 00;
 let cheatMenu = false;
 let yourYurble = null;
-let currentBase = "url('../imgs/baby/yurble_baby";
+let currentBase = "url('./imgs/baby/yurble_baby";
 let emotion = "";
 let currentImagePath = currentBase + emotion + ".png')";
 let timerStartVarOne; 
@@ -122,7 +123,7 @@ createPetBtn.addEventListener('click', function(){
   // stat initializer
   statInit();
   animationCheck();
-  // statDecreasersVarOne = setInterval(statDecreasersVar, 11000);
+  statDecreasersVarOne = setInterval(statDecreasersVar, 11000);
   console.log(yourYurble);
 });
 
@@ -404,18 +405,18 @@ function statSpan(){
   function yurbleAgeArtCheck() {
     if(yurbleAge === 1){
       //baby art
-      currentBase = "url('/imgs/baby/yurble_baby";
+      currentBase = "url('./imgs/baby/yurble_baby";
     } else if (yurbleAge === 2){
       //adult art
-      if(currentBase !== "url('/imgs/base/yurble_blue"){
-        currentBase = "url('/imgs/base/yurble_blue";
+      if(currentBase !== "url('./imgs/base/yurble_blue"){
+        currentBase = "url('./imgs/base/yurble_blue";
         currentImgFunc();
       }  
     } else if (yurbleAge ===3){
       //extreme art
       
-      if(currentBase !== "url('/imgs/evolution/yurble_halloween"){
-        currentBase = "url('/imgs/evolution/yurble_halloween";
+      if(currentBase !== "url('./imgs/evolution/yurble_halloween"){
+        currentBase = "url('./imgs/evolution/yurble_halloween";
         currentImgFunc();
       }
     }
@@ -472,11 +473,20 @@ function statSpan(){
 function cssInit(){
   userNameDisplay.innerText = `${userName.value}'s Yurble`;
   petNameDisplay.innerText = petName.value;
+  userNameDisplay.classList.add('fadeIn');
+  petNameDisplay.classList.add('fadeIn');
   basicAnim.classList.add('slideUp');
   createPetAnim.classList.add('slideDown');
   clock.classList.remove('hidden');
-  timeInfo.classList.remove('hidden');
+  clock.classList.add('fadeIn');
   actionMenu.classList.remove('hidden');
+  actionMenu.classList.add('fadeIn');
+  timeInfo.classList.remove('hidden');
+  timeInfo.classList.add('fadeIn');
+  hungerSelector.classList.add('fadeIn');
+  happinessSelector.classList.add('fadeIn');
+  sleepinessSelector.classList.add('fadeIn');
+
 }
 
 function timerCalc(){
@@ -501,7 +511,7 @@ function timerCalc(){
     petPic.style.background = currentImagePath;
     animationCheck();
     if(yurbleAge === 4 || hungerStat.value <= 0 || happinessStat.value <= 0 || sleepinessStat.value <= 0){
-      petPic.style.background = "url('../imgs/death/tombstone.png')"
+      petPic.style.background = "url('./imgs/death/tombstone.png')"
       petPic.className = 'actual-pet-image';
     }
   }

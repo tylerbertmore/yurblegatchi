@@ -347,8 +347,10 @@ function makeAllSad(){
 function killYourYurble(){
   makeAllSad();
   yurbleAge = 4;
+  yourYurble.age = 4;
   statSpan();
   numTwelve.innerHTML = "<i class='fas fa-skull-crossbones'></i>";
+  console.log(yourYurble);
   // game over funciton?
 }
 
@@ -358,8 +360,11 @@ function unlockAbuse(){
 
 function statSpan(){
   hungerSpan.textContent = hungerStat.value;
+  yourYurble.hunger = hungerStat.value;
   happinessSpan.textContent = happinessStat.value;
+  yourYurble.happiness = happinessStat.value;
   sleepinessSpan.textContent = sleepinessStat.value;
+  yourYurble.sleepiness = sleepinessStat.value;
 }
 
   function abuseAnimationTwo(){
@@ -373,17 +378,20 @@ function statSpan(){
       numTwelve.innerHTML = "<i class='fas fa-skull-crossbones'></i>";
       animationCheck();
       yurbleAge++;
+      yourYurble.age++;
       ageBaby.style.backgroundColor = "#eee";
       ageAdult.style.backgroundColor = "forestgreen";
       console.log(yurbleAge);
     } else if(timer === 1199){
       yurbleAge++;
+      yourYurble.age++;
       animationCheck();
       ageAdult.style.backgroundColor = "#eee";
       ageFinal.style.backgroundColor = "forestgreen";
       console.log(yurbleAge);
     } else if(timer === -1){
       yurbleAge++;
+      yourYurble.age++;
       ageFinal.style.backgroundColor = "#eee";
       clearInterval(timerStartVarOne);
       clearInterval(statDecreasersVarOne);

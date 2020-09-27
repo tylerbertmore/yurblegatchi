@@ -214,7 +214,7 @@ box-shadow: 3px 4px 15px 0px rgba(0,0,0,0.75);
 .actual-pet-image{
   height: 150px;
     width: 150px;
-    background: url('/../imgs/baby/yurble_baby.png');
+    background: url('/imgs/baby/yurble_baby.png');
   margin-top: 35%;
 }
 

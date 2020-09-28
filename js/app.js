@@ -234,7 +234,7 @@ statDecreasersVar = function() {
   }
   hungerStat.value -= randNumThree;
   yourYurble.hunger -= randNumThree;
-  console.log(yourYurble);
+  // console.log(yourYurble);
   statSpan();
   if(hungerStat.value <= 0 || sleepinessStat <=0 || happinessStat <=0){
     gameOverCheck();

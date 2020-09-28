@@ -4,7 +4,7 @@
 
 ### Overview
 
-Yurblegatchi is a Tomagatchi clone with art from Neopets.com. You can create a pet and then your responsibilities begin. If you do not feed your pet, give it enough food, or play with it; it will **DIE**
+Yurblegatchi is a Tomagatchi clone with art from Neopets.com. You can create a pet and then your responsibilities begin. If you do not feed your pet, give it enough sleep, or play with it; it will **DIE**
 
 ---
 
@@ -17,7 +17,7 @@ Yurblegatchi is a Tomagatchi clone with art from Neopets.com. You can create a p
   4.  Death...
 - **Care for your pet** Users will be able to feed and play with their pet after birth. During this time, users actions affect their pets appearance. If user's boredom, hunger, or sleepiness reach 0; the yurble will die.
 
-- **Face moral dilemmas** At Yurblegatchi industries, we do not disparage the depraved. If you want to abuse your pet, there is a way. This requires "clever use of game mechanics" according to our CEO.
+- **Face moral dilemmas** At Yurblegatchi industries, we do not disparage the depraved. If you want to abuse your pet, there is a way.
 
 ---
 
@@ -39,9 +39,11 @@ Yurblegatchi is a Tomagatchi clone with art from Neopets.com. You can create a p
 ### Wireframes
 
 - **Create a pet page** 
+
 ![Yurblegatchi Wireframe 1](https://i.imgur.com/8GE8koS.png)
 
 ---
 
 - **Interact with your pet** 
+
 ![Yurblegatchi Wireframe 2](https://i.imgur.com/p4G74Pt.png)

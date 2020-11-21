@@ -79,7 +79,7 @@ class Yurble {
     }
   
 }
-
+console.log('Welcome to the console! If you want to activate the secret cheat menu, type cheatMenu=true and click the black dot in the bottom left after the action button container.')
 // -------------------------------GLOBAL VARS
 let yurbleAge = 1;
 let timer = 3600;
